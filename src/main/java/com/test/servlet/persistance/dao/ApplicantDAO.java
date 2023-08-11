@@ -34,6 +34,8 @@ public class ApplicantDAO {
             }
             e.printStackTrace();
         }
+
+        // create
     }
 
     public void updateApplicant(Applicant applicant) {
