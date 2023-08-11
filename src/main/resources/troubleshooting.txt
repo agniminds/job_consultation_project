@@ -1,0 +1,9 @@
+User Tomcat 9
+
+MySQL 8.0 - Client does not support authentication protocol requested by server; consider upgrading MySQL client
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';
+
+Unknown initial character set index '255' received from server
+url=jdbc:mysql://localhost:3306/hybrisdb?characterEncoding=latin1&useConfigs=maxPerformance
+
+
