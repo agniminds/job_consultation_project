@@ -151,6 +151,33 @@ public class ConsultantDAO {
         return consultant;
     }
 
+    public Consultant findConsultant(String name) {
+
+        Transaction transaction = null;
+        Consultant consultant = null;
+        Session session ;
+        try{
+            session = HibernateUtil.getSessionFactory().openSession();
+            // start a transaction
+            transaction = session.beginTransaction();
+            String hql = "FROM Consultant E WHERE E.name = '"+name+"'";
+            Query query = session.createQuery(hql);
+            List results = query.list();
+            // get an user object
+            if(results!=null && !results.isEmpty()) {
+                consultant = (Consultant) results.get(0);
+                transaction.commit();
+            }
+
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
+        return consultant;
+    }
+
     /**
      * Get all Users
      * @return
