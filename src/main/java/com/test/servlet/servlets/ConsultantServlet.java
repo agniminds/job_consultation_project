@@ -67,6 +67,13 @@ public class ConsultantServlet extends HttpServlet {
 
     }
 
+    protected void doDelete(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException{
+
+        System.out.println("------------------");
+
+    }
+
     //a utility method to send object
     //as JSON response
     private void sendAsJson(
