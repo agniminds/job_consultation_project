@@ -1,5 +1,7 @@
 package com.test.servlet.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -13,7 +15,20 @@ public class Slot {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "consultant_id", referencedColumnName = "ID")
+    @JsonIgnore
     private Consultant consultant;
+
+
+    @Transient
+    private String consultant_id;
+
+    public String getConsultant_id() {
+        return consultant_id;
+    }
+
+    public void setConsultant_id(String consultant_id) {
+        this.consultant_id = consultant_id;
+    }
 
     @Column(name = "start_time", nullable = false)
     private Date startTime;

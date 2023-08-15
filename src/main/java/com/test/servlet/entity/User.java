@@ -1,5 +1,7 @@
 package com.test.servlet.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @MappedSuperclass
@@ -19,10 +21,13 @@ public class User {
     @Column(name="TYPE", length=20, nullable=true)
     private String type;
 
+
     @Column(name="USERNAME", length=20, nullable=true)
+    @JsonIgnore
     private String username;
 
     @Column(name="PASSWORD", length=20, nullable=true)
+    @JsonIgnore
     private String password;
 
     public String getType() {

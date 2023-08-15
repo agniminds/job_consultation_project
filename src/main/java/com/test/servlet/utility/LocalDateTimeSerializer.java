@@ -1,26 +1,28 @@
 package com.test.servlet.utility;
 
-import com.google.gson.*;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParseException;
 
 import java.lang.reflect.Type;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Date;
-import java.util.Locale;
 
 public class LocalDateTimeSerializer implements JsonDeserializer <Date>  {
 
 
     @Override
     public Date deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {
+        System.out.println("- --- in Deserializer---");
         System.out.println(jsonElement.getAsString());
         SimpleDateFormat date1 = new SimpleDateFormat("dd-M-yyyy hh:mm:ss");
 
         try {
             return date1.parse(jsonElement.getAsString());
         } catch (ParseException e) {
+            e.printStackTrace();
             throw new RuntimeException(e);
         }
 

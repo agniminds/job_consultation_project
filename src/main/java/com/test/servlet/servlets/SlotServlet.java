@@ -3,8 +3,10 @@ package com.test.servlet.servlets;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.test.servlet.entity.Applicant;
+import com.test.servlet.entity.Consultant;
 import com.test.servlet.entity.Slot;
 import com.test.servlet.persistance.dao.ApplicantDAO;
+import com.test.servlet.persistance.dao.ConsultantDAO;
 import com.test.servlet.persistance.dao.SlotDAO;
 import com.test.servlet.utility.LocalDateTimeSerializer;
 
@@ -21,6 +23,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
@@ -57,7 +60,7 @@ public class SlotServlet extends HttpServlet {
 
         System.out.println("----------------");
 
-        try{
+        try {
             StringBuilder buffer = new StringBuilder();
             BufferedReader reader = request.getReader();
             String line;
@@ -68,12 +71,16 @@ public class SlotServlet extends HttpServlet {
             String payload = buffer.toString();
             System.out.println(payload);
 
-            GsonBuilder gsonBuilder = new GsonBuilder();
-            gsonBuilder.registerTypeAdapter(LocalDateTime.class, new LocalDateTimeSerializer());
-            Gson gson = gsonBuilder.setPrettyPrinting().create();
+            Gson gson = new GsonBuilder()
+                    .registerTypeAdapter(Date.class, new LocalDateTimeSerializer())
+                    .setPrettyPrinting().create();
 
 
             Slot slot = gson.fromJson(payload, Slot.class);
+            ConsultantDAO consaltantDao = new ConsultantDAO();
+            Consultant consultant1 =consaltantDao.getUser(Integer.parseInt(slot.getConsultant_id()));
+            slot.setConsultant(consultant1);
+            System.out.println(slot.getConsultant());
             System.out.println(slot.getStartTime());
             System.out.println(slot.getEndTime());
 
@@ -87,9 +94,9 @@ public class SlotServlet extends HttpServlet {
             SimpleDateFormat date1 = new SimpleDateFormat("dd-M-yyyy hh:mm:ss");
 
             try {
-                date1.parse("15-8-2023 11:10:00");
+                Date dateCreated = date1.parse("15-8-2023 11:10:00");
                 System.out.println("------testing--------");
-                System.out.println(date1.toString());
+                System.out.println(dateCreated.toLocaleString());
             } catch (ParseException e) {
                 throw new RuntimeException(e);
             }
@@ -101,14 +108,12 @@ public class SlotServlet extends HttpServlet {
             slotDAO.saveSlot(slot);
 
             sendAsJson(response, slot);
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
 
-
     }
-
 
 
     private void sendAsJson(
