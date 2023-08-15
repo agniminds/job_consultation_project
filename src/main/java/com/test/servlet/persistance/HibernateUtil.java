@@ -6,6 +6,7 @@ import java.util.Properties;
 import com.test.servlet.entity.Applicant;
 import com.test.servlet.entity.Appointment;
 import com.test.servlet.entity.Consultant;
+import com.test.servlet.entity.Slot;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
@@ -38,8 +39,8 @@ public class HibernateUtil {
                 configuration
                         .addAnnotatedClass(Consultant.class)
                         .addAnnotatedClass(Applicant.class)
-                        .addAnnotatedClass(Appointment.class);
-
+                        .addAnnotatedClass(Appointment.class)
+                        .addAnnotatedClass(Slot.class);
 
                 ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
                         .applySettings(configuration.getProperties()).build();

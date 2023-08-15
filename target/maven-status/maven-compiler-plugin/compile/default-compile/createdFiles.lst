@@ -3,11 +3,16 @@ com\test\servlet\persistance\dao\ApplicantDAO.class
 com\test\servlet\servlets\UserServlet.class
 com\test\servlet\DataPlaceHolderServlet.class
 com\test\servlet\entity\Applicant.class
+com\test\servlet\persistance\dao\SlotDAO.class
 com\test\servlet\TestSessionServlet.class
+com\test\servlet\entity\Slot.class
+com\test\servlet\utility\LocalDateTimeSerializer.class
+com\test\servlet\servlets\SlotServlet.class
 com\test\servlet\TestDataPlaceHolderServlet.class
 com\test\servlet\FirstServlet.class
 com\test\servlet\entity\Appointment.class
 com\test\servlet\persistance\dao\ConsultantDAO.class
+com\test\servlet\servlets\ApplicantServlet.class
 com\test\servlet\entity\User.class
 com\test\servlet\servlets\ConsultantServlet.class
 com\test\servlet\persistance\dao\AppoinmentDAO.class

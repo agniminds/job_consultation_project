@@ -38,15 +38,29 @@ public class ApplicantDAO {
         // create
     }
 
-    public void updateApplicant(Applicant applicant) {
+    public void updateApplicant(int applicantId, Applicant applicant) {
+
         Transaction transaction = null;
         Session session ;
         try{
             session = HibernateUtil.getSessionFactory().openSession();
             // start a transaction
             transaction = session.beginTransaction();
+
+            // getting the existing consultant object
+            Applicant existingApplicant = (Applicant) session.get(Applicant.class, applicantId);
+
+            if (existingApplicant != null){
+                existingApplicant.setName(applicant.getName());
+                existingApplicant.setPassword(applicant.getPassword());
+                existingApplicant.setRole(applicant.getRole());
+                existingApplicant.setType(applicant.getType());
+            }
+            else {
+                System.out.println("Couldn't find applicant");
+            }
             // save the student object
-            session.update(applicant);
+            session.merge(applicant);
             // commit transaction
             transaction.commit();
         } catch (Exception e) {
@@ -55,6 +69,7 @@ public class ApplicantDAO {
             }
             e.printStackTrace();
         }
+
     }
 
     public void deleteApplicant(int id) {
@@ -83,7 +98,7 @@ public class ApplicantDAO {
         }
     }
 
-    public Applicant findApplicant(String username, String password) {
+    public Applicant findUser(String username, String password) {
 
         Transaction transaction = null;
         Applicant applicant = null;
@@ -109,6 +124,34 @@ public class ApplicantDAO {
         }
         return applicant;
     }
+
+    public Applicant findApplicant(String name) {
+
+        Transaction transaction = null;
+        Applicant applicant = null;
+        Session session ;
+        try{
+            session = HibernateUtil.getSessionFactory().openSession();
+            // start a transaction
+            transaction = session.beginTransaction();
+            String hql = "FROM Applicant E WHERE E.name = '"+name+"'";
+            Query query = session.createQuery(hql);
+            List results = query.list();
+            // get an user object
+            if(results!=null && !results.isEmpty()) {
+                applicant = (Applicant) results.get(0);
+                transaction.commit();
+            }
+
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
+        return applicant;
+    }
+
 
 
 

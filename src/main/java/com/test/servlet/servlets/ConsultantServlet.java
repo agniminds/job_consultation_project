@@ -72,7 +72,54 @@ public class ConsultantServlet extends HttpServlet {
 
         System.out.println("------------------");
 
+        StringBuilder buffer = new StringBuilder();
+        BufferedReader reader = request.getReader();
+        String line;
+        while ((line = reader.readLine()) != null) {
+            buffer.append(line);
+        }
+
+        String payload = buffer.toString();
+        Gson _gson = new Gson();
+
+        Consultant model = _gson.fromJson(payload, Consultant.class);
+
+        System.out.println("id : " + model.getId());
+
+        consultantDAO.deleteUser(model.getId());
+
+        sendAsJson(response, model);
+
     }
+
+    protected void doPut(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException{
+
+        System.out.println("------------------");
+
+        StringBuilder buffer = new StringBuilder();
+        BufferedReader reader = request.getReader();
+        String line;
+        while ((line = reader.readLine()) != null) {
+            buffer.append(line);
+        }
+
+        String payload = buffer.toString();
+        Gson _gson = new Gson();
+
+        Consultant model = _gson.fromJson(payload, Consultant.class);
+
+        System.out.println("id : " + model.getId());
+
+        consultantDAO.updateUser(model.getId(), model);
+
+        sendAsJson(response, model);
+
+
+
+    }
+
+
 
     //a utility method to send object
     //as JSON response

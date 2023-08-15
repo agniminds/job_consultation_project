@@ -41,15 +41,28 @@ public class ConsultantDAO {
      * Update User
      * @param consultant
      */
-    public void updateUser(Consultant consultant) {
+    public void updateUser(int consultantId, Consultant consultant) {
         Transaction transaction = null;
         Session session ;
         try{
              session = HibernateUtil.getSessionFactory().openSession();
             // start a transaction
             transaction = session.beginTransaction();
+
+            // getting the existing consultant object
+            Consultant existingConsultant = (Consultant) session.get(Consultant.class, consultantId);
+
+            if (existingConsultant != null){
+                existingConsultant.setName(consultant.getName());
+                existingConsultant.setPassword(consultant.getPassword());
+                existingConsultant.setRole(consultant.getRole());
+                existingConsultant.setType(consultant.getType());
+            }
+            else {
+                System.out.println("Couldn't find consultant");
+            }
             // save the student object
-            session.update(consultant);
+            session.merge(consultant);
             // commit transaction
             transaction.commit();
         } catch (Exception e) {

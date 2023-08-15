@@ -39,7 +39,7 @@ public class AppoinmentDAO {
             // start a transaction
             transaction = session.beginTransaction();
             // save the student object
-            session.update(appointment);
+            session.merge(appointment);
             // commit transaction
             transaction.commit();
         } catch (Exception e) {
@@ -100,8 +100,8 @@ public class AppoinmentDAO {
 
     // appoinment date search possible ?
 
-    /*
-    public List<Appointment> findAppoinment(String consultantname) {
+
+    public List<Appointment> findAppoinmentConsultant(String consultantname) {
 
         Transaction transaction = null;
         List <Appointment> listOfAppoinment = null;
@@ -117,14 +117,15 @@ public class AppoinmentDAO {
             consultantIdQuery.setParameter("consultantName",consultantname);
             Integer consultantId = (Integer) consultantIdQuery.uniqueResult();
 
-            String hql = "FROM Appoinment E WHERE E.consultant_id = '"+consultantId +"'";
-            Query query = session.createQuery(hql);
-            List results = query.list();
-            // get an user object
-            if(results!=null && !results.isEmpty()) {
-                appointment = (Appointment) results.get(0);
-                transaction.commit();
+            if ( consultantId != null){
+
+                String hql = "FROM Appoinment E WHERE E.consultant_id = :consultantId";
+                Query query = session.createQuery(hql);
+                query.setParameter("consultantId", consultantId);
+                listOfAppoinment = query.list();
+
             }
+            transaction.commit();
 
         } catch (Exception e) {
             if (transaction != null) {
@@ -132,8 +133,8 @@ public class AppoinmentDAO {
             }
             e.printStackTrace();
         }
-        return appointment;
-    }*/
+        return listOfAppoinment;
+    }
 
     // creating the query for getting all appoinments
 
