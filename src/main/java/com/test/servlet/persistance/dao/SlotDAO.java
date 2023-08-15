@@ -142,7 +142,7 @@ public class SlotDAO {
             Integer consultantId = (Integer) consultantIdQuery.uniqueResult();
 
             if ( consultantId != null){
-                String hql = "FROM Slot E WHERE E.consultant_id = :consultantId";
+                String hql = "FROM Slot E WHERE E.consultant.id = :consultantId";
                 Query query = session.createQuery(hql);
                 query.setParameter("consultantId", consultantId);
                 listOfSlots = query.list();

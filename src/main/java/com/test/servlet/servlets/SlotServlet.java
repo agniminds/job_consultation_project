@@ -26,6 +26,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import java.util.concurrent.ExecutionException;
 
 @WebServlet(name = "SlotServlet", urlPatterns = "/slotServlet")
 public class SlotServlet extends HttpServlet {
@@ -40,17 +41,22 @@ public class SlotServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        System.out.println("----------------");
+        System.out.println("-------- do get called ------");
 
+        try {
+            String consultantName = request.getParameter("consultantName");
 
-        String consultantName = request.getParameter("consultantName");
+            if (consultantName != null) {
+                List<Slot> slots = slotDAO.findSlotConsultant(consultantName);
+                sendAsJson(response, slots);
+            } else {
+                response.sendError(HttpServletResponse.SC_BAD_REQUEST);
+            }
 
-        if (consultantName != null) {
-            List<Slot> slots = slotDAO.findSlotConsultant(consultantName);
-            sendAsJson(response, slots);
-        } else {
-            response.sendError(HttpServletResponse.SC_BAD_REQUEST);
+        }catch (Exception e){
+            e.printStackTrace();
         }
+
 
     }
 
@@ -103,7 +109,6 @@ public class SlotServlet extends HttpServlet {
 
             //SimpleDateFormat date1 = new SimpleDateFormat("dd-M-yyyy hh:mm:ss");
 
-            // System.out.println("id : " + slot.getName());
 
             slotDAO.saveSlot(slot);
 
