@@ -141,11 +141,14 @@ public class SlotDAO {
             consultantIdQuery.setParameter("consultantName",consultantname);
             Integer consultantId = (Integer) consultantIdQuery.uniqueResult();
 
+            System.out.println("-------got consultant id based on name ----------");
+
             if ( consultantId != null){
                 String hql = "FROM Slot E WHERE E.consultant.id = :consultantId";
                 Query query = session.createQuery(hql);
                 query.setParameter("consultantId", consultantId);
                 listOfSlots = query.list();
+                System.out.println(" ------------ got slot list based on consultant ot -------------");
             }
             transaction.commit();
 

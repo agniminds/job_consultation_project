@@ -2,12 +2,12 @@ package com.test.servlet.servlets;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.test.servlet.entity.Applicant;
 import com.test.servlet.entity.Consultant;
 import com.test.servlet.entity.Slot;
-import com.test.servlet.persistance.dao.ApplicantDAO;
 import com.test.servlet.persistance.dao.ConsultantDAO;
 import com.test.servlet.persistance.dao.SlotDAO;
+import com.test.servlet.utility.HibernateProxyTypeAdapter;
+import com.test.servlet.utility.LocalDateTimeDeserializer;
 import com.test.servlet.utility.LocalDateTimeSerializer;
 
 import javax.servlet.ServletException;
@@ -20,13 +20,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
-import java.util.Locale;
-import java.util.concurrent.ExecutionException;
 
 @WebServlet(name = "SlotServlet", urlPatterns = "/slotServlet")
 public class SlotServlet extends HttpServlet {
@@ -48,6 +43,7 @@ public class SlotServlet extends HttpServlet {
 
             if (consultantName != null) {
                 List<Slot> slots = slotDAO.findSlotConsultant(consultantName);
+                System.out.println(slots);
                 sendAsJson(response, slots);
             } else {
                 response.sendError(HttpServletResponse.SC_BAD_REQUEST);
@@ -78,7 +74,7 @@ public class SlotServlet extends HttpServlet {
             System.out.println(payload);
 
             Gson gson = new GsonBuilder()
-                    .registerTypeAdapter(Date.class, new LocalDateTimeSerializer())
+                    .registerTypeAdapter(Date.class, new LocalDateTimeDeserializer())
                     .setPrettyPrinting().create();
 
 
@@ -126,8 +122,12 @@ public class SlotServlet extends HttpServlet {
             Object obj) throws IOException {
 
         response.setContentType("application/json");
-        Gson _gson = new Gson();
-        String res = _gson.toJson(obj);
+        Gson gson = new GsonBuilder()
+                .registerTypeAdapter(Date.class, new LocalDateTimeSerializer())
+                .registerTypeAdapterFactory(HibernateProxyTypeAdapter.FACTORY)
+                .setPrettyPrinting().create();
+
+        String res = gson.toJson(obj);
 
         PrintWriter out = response.getWriter();
 

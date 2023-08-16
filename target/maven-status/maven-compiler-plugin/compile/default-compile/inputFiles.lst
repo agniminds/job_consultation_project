@@ -3,8 +3,10 @@ E:\Github\job_consultation_project\src\main\java\com\test\servlet\entity\Consult
 E:\Github\job_consultation_project\src\main\java\com\test\servlet\servlets\SlotServlet.java
 E:\Github\job_consultation_project\src\main\java\com\test\servlet\TestSessionServlet.java
 E:\Github\job_consultation_project\src\main\java\com\test\servlet\servlets\LoginServlet.java
+E:\Github\job_consultation_project\src\main\java\com\test\servlet\utility\HibernateProxyTypeAdapter.java
 E:\Github\job_consultation_project\src\main\java\com\test\servlet\persistance\dao\ApplicantDAO.java
 E:\Github\job_consultation_project\src\main\java\com\test\servlet\persistance\dao\SlotDAO.java
+E:\Github\job_consultation_project\src\main\java\com\test\servlet\utility\LocalDateTimeDeserializer.java
 E:\Github\job_consultation_project\src\main\java\com\test\servlet\servlets\ApplicantServlet.java
 E:\Github\job_consultation_project\src\main\java\com\test\servlet\utility\LocalDateTimeSerializer.java
 E:\Github\job_consultation_project\src\main\java\com\test\servlet\persistance\dao\AppoinmentDAO.java
