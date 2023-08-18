@@ -12,16 +12,14 @@ public class Appointment {
     @Column(name="ID", nullable=false, unique=true, length=11)
     private int id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "consultant_id", referencedColumnName = "id")
     private Consultant consultant;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "applicant_id", referencedColumnName = "id")
     private Applicant applicant;
 
-    @Column(name = "appointment_date")
-    private Date appointmentDate;
 
     @Column(name = "start_time")
     private Date startTime;
@@ -59,14 +57,6 @@ public class Appointment {
         this.applicant = applicant;
     }
 
-    public Date getAppointmentDate() {
-        return appointmentDate;
-    }
-
-    public void setAppointmentDate(Date appointmentDate) {
-        this.appointmentDate = appointmentDate;
-    }
-
     public Date getStartTime() {
         return startTime;
     }
@@ -82,7 +72,6 @@ public class Appointment {
     public void setEndTime(Date endTime) {
         this.endTime = endTime;
     }
-
 
     public String getNotes() {
         return notes;

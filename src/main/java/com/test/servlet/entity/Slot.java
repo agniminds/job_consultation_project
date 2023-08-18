@@ -36,6 +36,17 @@ public class Slot {
     @Column(name = "end_time", nullable = false)
     private Date endTime;
 
+    @Column(name = "booked")
+    private Boolean booked;
+
+    public Boolean getBooked() {
+        return booked;
+    }
+
+    public void setBooked(Boolean booked) {
+        this.booked = booked;
+    }
+
     public int getSlotId() {
         return slotId;
     }

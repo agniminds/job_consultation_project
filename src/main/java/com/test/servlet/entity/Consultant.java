@@ -14,4 +14,16 @@ import javax.persistence.UniqueConstraint;
         uniqueConstraints={@UniqueConstraint(columnNames={"ID"})})
 public class Consultant extends User {
 
+    @Column(name = "isAdmin", nullable = false, columnDefinition = "TINYINT(1) DEFAULT 0")
+    private boolean isAdmin;
+
+    public boolean isAdmin(){
+        return isAdmin;
+    }
+
+    public void setAdmin(boolean isAdmin){
+        this.isAdmin = isAdmin;
+    }
+
+
 }

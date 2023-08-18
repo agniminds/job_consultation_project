@@ -32,6 +32,7 @@ public class SlotDAO {
     }
 
     public void updateSlot(Slot slot) {
+        System.out.println(slot.getSlotId());
         Transaction transaction = null;
         Session session ;
         try{
@@ -39,7 +40,7 @@ public class SlotDAO {
             // start a transaction
             transaction = session.beginTransaction();
             // save the student object
-            session.merge(slot);
+            session.update(slot);
             // commit transaction
             transaction.commit();
         } catch (Exception e) {
@@ -49,6 +50,32 @@ public class SlotDAO {
             e.printStackTrace();
         }
     }
+
+    public Slot getSlotUpdateAsBooked(int id) {
+
+        Transaction transaction = null;
+        Session session;
+        Slot slot = null;
+        try {
+            session = HibernateUtil.getSessionFactory().openSession();
+            // start a transaction
+            transaction = session.beginTransaction();
+            // get an user object
+            slot = (Slot) session.get(Slot.class, id);
+
+            slot.setBooked(true);
+            // commit transaction
+            transaction.commit();
+            // session.close();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
+        return slot;
+    }
+
 
     public void deleteSlot(int id) {
 

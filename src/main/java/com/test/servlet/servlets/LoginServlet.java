@@ -1,7 +1,9 @@
 package com.test.servlet.servlets;
 
 import com.google.gson.Gson;
+import com.test.servlet.entity.Applicant;
 import com.test.servlet.entity.Consultant;
+import com.test.servlet.persistance.dao.ApplicantDAO;
 import com.test.servlet.persistance.dao.ConsultantDAO;
 
 import javax.servlet.ServletException;
@@ -9,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -17,9 +20,11 @@ import java.io.PrintWriter;
 public class LoginServlet extends HttpServlet {
 
     private ConsultantDAO consultantDAO;
+    private ApplicantDAO applicantDAO;
 
     public void init() {
         consultantDAO = new ConsultantDAO();
+        applicantDAO = new ApplicantDAO();
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -39,16 +44,40 @@ public class LoginServlet extends HttpServlet {
         Gson _gson = new Gson();
 
         Consultant model = _gson.fromJson(payload, Consultant.class);
+        Applicant model1 = _gson.fromJson(payload, Applicant.class);
 
         System.out.println("username : " + model.getUsername());
 
         System.out.println("password : " + model.getPassword());
 
         Consultant consultant = consultantDAO.findUser(model.getUsername(), model.getPassword());
-        if(consultant!=null) {
-            System.out.println("Found user ");
+        Applicant applicant = applicantDAO.findUser(model1.getUsername(), model1.getPassword());
 
-            sendAsJson(response,consultant);
+        if(consultant!=null) {
+            System.out.println("Found consultant ");
+
+            if (consultant.isAdmin()){
+                HttpSession httpSession = request.getSession(true);
+                httpSession.setAttribute("id", consultant.getId());
+                sendAsJson(response,consultant);
+
+            }
+            else {
+
+                HttpSession httpSession = request.getSession(true);
+                httpSession.setAttribute("id", consultant.getId());
+                sendAsJson(response,consultant);
+
+            }
+
+
+        } else if (applicant != null) {
+
+            System.out.println("Found applicant");
+            HttpSession httpSession = request.getSession(true);
+            httpSession.setAttribute("id", applicant.getId());
+            sendAsJson(response, applicant);
+
         } else {
             response.sendError(HttpServletResponse.SC_NOT_FOUND);
 

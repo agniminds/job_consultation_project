@@ -191,6 +191,8 @@ public class ConsultantDAO {
         return consultant;
     }
 
+
+
     /**
      * Get all Users
      * @return

@@ -8,4 +8,6 @@ import javax.persistence.UniqueConstraint;
 @Table(name="Applicant",
         uniqueConstraints={@UniqueConstraint(columnNames={"ID"})})
 public class Applicant extends User {
+
+
 }

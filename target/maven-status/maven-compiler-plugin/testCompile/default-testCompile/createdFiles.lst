@@ -1,2 +1,4 @@
+com\test\servlet\persistance\dao\ApplicantDAOTest.class
+com\test\servlet\persistance\dao\AppoinmentDAOTest.class
 com\test\servlet\persistance\dao\SlotDAOTest.class
 com\test\servlet\persistance\dao\ConsultantDAOTest.class

@@ -10,6 +10,7 @@ com\test\servlet\persistance\dao\ConsultantDAO.class
 com\test\servlet\persistance\dao\AppoinmentDAO.class
 com\test\servlet\entity\Consultant.class
 com\test\servlet\utility\LocalDateTimeDeserializer.class
+com\test\servlet\servlets\AppoinmentServlet.class
 com\test\servlet\LogoutServlet.class
 com\test\servlet\EnvironmentVariableServlet.class
 com\test\servlet\persistance\dao\ApplicantDAO.class
