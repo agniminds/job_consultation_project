@@ -8,6 +8,7 @@ E:\Github\job_consultation_project\src\main\java\com\test\servlet\entity\User.ja
 E:\Github\job_consultation_project\src\main\java\com\test\servlet\entity\Slot.java
 E:\Github\job_consultation_project\src\main\java\com\test\servlet\entity\Appointment.java
 E:\Github\job_consultation_project\src\main\java\com\test\servlet\FirstServlet.java
+E:\Github\job_consultation_project\src\main\java\com\test\servlet\servlets\LoggedInUserServlet.java
 E:\Github\job_consultation_project\src\main\java\com\test\servlet\EnvironmentVariableServlet.java
 E:\Github\job_consultation_project\src\main\java\com\test\servlet\TestDataPlaceHolderServlet.java
 E:\Github\job_consultation_project\src\main\java\com\test\servlet\entity\Applicant.java

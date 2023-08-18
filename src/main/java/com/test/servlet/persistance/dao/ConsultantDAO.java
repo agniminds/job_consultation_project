@@ -62,7 +62,7 @@ public class ConsultantDAO {
                 System.out.println("Couldn't find consultant");
             }
             // save the student object
-            session.merge(consultant);
+            session.merge(existingConsultant);
             // commit transaction
             transaction.commit();
         } catch (Exception e) {

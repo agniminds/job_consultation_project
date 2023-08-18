@@ -20,6 +20,7 @@ com\test\servlet\entity\Slot.class
 com\test\servlet\utility\LocalDateTimeSerializer.class
 com\test\servlet\FirstServlet.class
 com\test\servlet\servlets\ApplicantServlet.class
+com\test\servlet\servlets\LoggedInUserServlet.class
 com\test\servlet\entity\User.class
 com\test\servlet\servlets\ConsultantServlet.class
 com\test\servlet\persistance\HibernateUtil.class
