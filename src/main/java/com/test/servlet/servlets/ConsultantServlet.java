@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -95,7 +96,13 @@ public class ConsultantServlet extends HttpServlet {
     protected void doPut(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException{
 
+        HttpSession httpSession = request.getSession();
+        int id = (Integer) httpSession.getAttribute("id");
+
+
         System.out.println("------------------");
+        System.out.println("--- id from session -----");
+        System.out.println(id);
 
         StringBuilder buffer = new StringBuilder();
         BufferedReader reader = request.getReader();
@@ -111,9 +118,9 @@ public class ConsultantServlet extends HttpServlet {
 
         System.out.println("id : " + model.getId());
 
-        consultantDAO.updateUser(model.getId(), model);
+        Consultant updatedConsultant = consultantDAO.updateUser(id, model);
 
-        sendAsJson(response, model);
+        sendAsJson(response, updatedConsultant);
 
 
 

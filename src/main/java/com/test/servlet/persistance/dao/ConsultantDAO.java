@@ -41,7 +41,7 @@ public class ConsultantDAO {
      * Update User
      * @param consultant
      */
-    public void updateUser(int consultantId, Consultant consultant) {
+    public Consultant updateUser(int consultantId, Consultant consultant) {
         Transaction transaction = null;
         Session session ;
         try{
@@ -62,15 +62,18 @@ public class ConsultantDAO {
                 System.out.println("Couldn't find consultant");
             }
             // save the student object
-            session.merge(existingConsultant);
+            session.update(existingConsultant);
             // commit transaction
             transaction.commit();
+            return existingConsultant;
         } catch (Exception e) {
             if (transaction != null) {
                 transaction.rollback();
             }
             e.printStackTrace();
         }
+        return null;
+
     }
 
     /**
