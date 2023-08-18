@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.test.servlet.persistance.dao.ApplicantDAOTest" time="0.804" tests="1" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.test.servlet.persistance.dao.ApplicantDAOTest" time="1.242" tests="1" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="20"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -15,7 +15,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="US"/>
     <property name="sun.boot.library.path" value="C:\Users\Predator\.jdks\openjdk-20.0.2\bin"/>
-    <property name="sun.java.command" value="C:\Users\Predator\AppData\Local\Temp\surefire9995755805002923507\surefirebooter-20230817184451566_3.jar C:\Users\Predator\AppData\Local\Temp\surefire9995755805002923507 2023-08-17T18-44-51_473-jvmRun1 surefire-20230817184451566_1tmp surefire_0-20230817184451566_2tmp"/>
+    <property name="sun.java.command" value="C:\Users\Predator\AppData\Local\Temp\surefire17761094361697264415\surefirebooter-20230818140117932_3.jar C:\Users\Predator\AppData\Local\Temp\surefire17761094361697264415 2023-08-18T14-01-17_761-jvmRun1 surefire-20230818140117932_1tmp surefire_0-20230818140117932_2tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="E:\Github\job_consultation_project\target\test-classes;E:\Github\job_consultation_project\target\classes;C:\Users\Predator\.m2\repository\javax\servlet\javax.servlet-api\3.1.0\javax.servlet-api-3.1.0.jar;C:\Users\Predator\.m2\repository\org\hibernate\hibernate-core\4.3.5.Final\hibernate-core-4.3.5.Final.jar;C:\Users\Predator\.m2\repository\org\jboss\logging\jboss-logging\3.1.3.GA\jboss-logging-3.1.3.GA.jar;C:\Users\Predator\.m2\repository\org\jboss\logging\jboss-logging-annotations\1.2.0.Beta1\jboss-logging-annotations-1.2.0.Beta1.jar;C:\Users\Predator\.m2\repository\org\jboss\spec\javax\transaction\jboss-transaction-api_1.2_spec\1.0.0.Final\jboss-transaction-api_1.2_spec-1.0.0.Final.jar;C:\Users\Predator\.m2\repository\dom4j\dom4j\1.6.1\dom4j-1.6.1.jar;C:\Users\Predator\.m2\repository\xml-apis\xml-apis\1.0.b2\xml-apis-1.0.b2.jar;C:\Users\Predator\.m2\repository\org\hibernate\common\hibernate-commons-annotations\4.0.4.Final\hibernate-commons-annotations-4.0.4.Final.jar;C:\Users\Predator\.m2\repository\org\hibernate\javax\persistence\hibernate-jpa-2.1-api\1.0.0.Final\hibernate-jpa-2.1-api-1.0.0.Final.jar;C:\Users\Predator\.m2\repository\org\javassist\javassist\3.18.1-GA\javassist-3.18.1-GA.jar;C:\Users\Predator\.m2\repository\antlr\antlr\2.7.7\antlr-2.7.7.jar;C:\Users\Predator\.m2\repository\org\jboss\jandex\1.1.0.Final\jandex-1.1.0.Final.jar;C:\Users\Predator\.m2\repository\org\slf4j\slf4j-simple\1.7.5\slf4j-simple-1.7.5.jar;C:\Users\Predator\.m2\repository\org\slf4j\slf4j-api\1.7.5\slf4j-api-1.7.5.jar;C:\Users\Predator\.m2\repository\mysql\mysql-connector-java\5.0.5\mysql-connector-java-5.0.5.jar;C:\Users\Predator\.m2\repository\javax\servlet\jstl\1.2\jstl-1.2.jar;C:\Users\Predator\.m2\repository\com\google\code\gson\gson\2.10.1\gson-2.10.1.jar;C:\Users\Predator\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.15.2\jackson-annotations-2.15.2.jar;C:\Users\Predator\.m2\repository\junit\junit\4.4\junit-4.4.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -30,7 +30,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\Predator\AppData\Local\Temp\surefire9995755805002923507\surefirebooter-20230817184451566_3.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\Predator\AppData\Local\Temp\surefire17761094361697264415\surefirebooter-20230818140117932_3.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="20.0.2+9-78"/>
@@ -59,38 +59,38 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="64.0"/>
   </properties>
-  <testcase name="testFindApplicant" classname="com.test.servlet.persistance.dao.ApplicantDAOTest" time="0.792">
+  <testcase name="testFindApplicant" classname="com.test.servlet.persistance.dao.ApplicantDAOTest" time="1.226">
     <system-out><![CDATA[Hibernate Java Config serviceRegistry created
 Hibernate: select applicant0_.ID as ID1_0_, applicant0_.NAME as NAME2_0_, applicant0_.PASSWORD as PASSWORD3_0_, applicant0_.ROLE as ROLE4_0_, applicant0_.TYPE as TYPE5_0_, applicant0_.USERNAME as USERNAME6_0_ from Applicant applicant0_ where applicant0_.ID='1'
 john doe
 ]]></system-out>
-    <system-err><![CDATA[Aug 17, 2023 6:44:51 PM org.hibernate.annotations.common.reflection.java.JavaReflectionManager <clinit>
+    <system-err><![CDATA[Aug 18, 2023 2:01:18 PM org.hibernate.annotations.common.reflection.java.JavaReflectionManager <clinit>
 INFO: HCANN000001: Hibernate Commons Annotations {4.0.4.Final}
-Aug 17, 2023 6:44:51 PM org.hibernate.Version logVersion
+Aug 18, 2023 2:01:18 PM org.hibernate.Version logVersion
 INFO: HHH000412: Hibernate Core {4.3.5.Final}
-Aug 17, 2023 6:44:51 PM org.hibernate.cfg.Environment <clinit>
+Aug 18, 2023 2:01:18 PM org.hibernate.cfg.Environment <clinit>
 INFO: HHH000206: hibernate.properties not found
-Aug 17, 2023 6:44:51 PM org.hibernate.cfg.Environment buildBytecodeProvider
+Aug 18, 2023 2:01:18 PM org.hibernate.cfg.Environment buildBytecodeProvider
 INFO: HHH000021: Bytecode provider name : javassist
-Aug 17, 2023 6:44:52 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+Aug 18, 2023 2:01:18 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
 WARN: HHH000402: Using Hibernate built-in connection pool (not for production use!)
-Aug 17, 2023 6:44:52 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl buildCreator
+Aug 18, 2023 2:01:18 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl buildCreator
 INFO: HHH000401: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://localhost:3307/job_consultation?characterEncoding=latin1&useConfigs=maxPerformance]
-Aug 17, 2023 6:44:52 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl buildCreator
+Aug 18, 2023 2:01:18 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl buildCreator
 INFO: HHH000046: Connection properties: {password=****, user=root}
-Aug 17, 2023 6:44:52 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl buildCreator
+Aug 18, 2023 2:01:18 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl buildCreator
 INFO: HHH000006: Autocommit mode: false
-Aug 17, 2023 6:44:52 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
+Aug 18, 2023 2:01:18 PM org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl configure
 INFO: HHH000115: Hibernate connection pool size: 20 (min=1)
-Aug 17, 2023 6:44:52 PM org.hibernate.dialect.Dialect <init>
+Aug 18, 2023 2:01:18 PM org.hibernate.dialect.Dialect <init>
 INFO: HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
-Aug 17, 2023 6:44:52 PM org.hibernate.engine.jdbc.internal.LobCreatorBuilder useContextualLobCreation
+Aug 18, 2023 2:01:19 PM org.hibernate.engine.jdbc.internal.LobCreatorBuilder useContextualLobCreation
 INFO: HHH000423: Disabling contextual LOB creation as JDBC driver reported JDBC version [3] less than 4
-Aug 17, 2023 6:44:52 PM org.hibernate.engine.transaction.internal.TransactionFactoryInitiator initiateService
+Aug 18, 2023 2:01:19 PM org.hibernate.engine.transaction.internal.TransactionFactoryInitiator initiateService
 INFO: HHH000399: Using default transaction strategy (direct JDBC transactions)
-Aug 17, 2023 6:44:52 PM org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory <init>
+Aug 18, 2023 2:01:19 PM org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory <init>
 INFO: HHH000397: Using ASTQueryTranslatorFactory
-Aug 17, 2023 6:44:52 PM org.hibernate.proxy.pojo.javassist.JavassistLazyInitializer getProxyFactory
+Aug 18, 2023 2:01:19 PM org.hibernate.proxy.pojo.javassist.JavassistLazyInitializer getProxyFactory
 ERROR: HHH000142: Javassist Enhancement failed: com.test.servlet.entity.Applicant
 java.lang.reflect.InaccessibleObjectException: Unable to make protected final java.lang.Class java.lang.ClassLoader.defineClass(java.lang.String,byte[],int,int,java.security.ProtectionDomain) throws java.lang.ClassFormatError accessible: module java.base does not "opens java.lang" to unnamed module @17550481
 	at java.base/java.lang.reflect.AccessibleObject.throwInaccessibleObjectException(AccessibleObject.java:387)
@@ -148,7 +148,7 @@ java.lang.reflect.InaccessibleObjectException: Unable to make protected final ja
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
 
-Aug 17, 2023 6:44:52 PM org.hibernate.tuple.entity.PojoEntityTuplizer buildProxyFactory
+Aug 18, 2023 2:01:19 PM org.hibernate.tuple.entity.PojoEntityTuplizer buildProxyFactory
 WARN: HHH000305: Could not create proxy factory for:com.test.servlet.entity.Applicant
 org.hibernate.HibernateException: HHH000142: Javassist Enhancement failed: com.test.servlet.entity.Applicant
 	at org.hibernate.proxy.pojo.javassist.JavassistLazyInitializer.getProxyFactory(JavassistLazyInitializer.java:166)
@@ -209,7 +209,7 @@ Caused by: java.lang.reflect.InaccessibleObjectException: Unable to make protect
 	at org.hibernate.proxy.pojo.javassist.JavassistLazyInitializer.getProxyFactory(JavassistLazyInitializer.java:162)
 	... 41 more
 
-Aug 17, 2023 6:44:52 PM org.hibernate.proxy.pojo.javassist.JavassistLazyInitializer getProxyFactory
+Aug 18, 2023 2:01:19 PM org.hibernate.proxy.pojo.javassist.JavassistLazyInitializer getProxyFactory
 ERROR: HHH000142: Javassist Enhancement failed: com.test.servlet.entity.Slot
 java.lang.reflect.InaccessibleObjectException: Unable to make protected final java.lang.Class java.lang.ClassLoader.defineClass(java.lang.String,byte[],int,int,java.security.ProtectionDomain) throws java.lang.ClassFormatError accessible: module java.base does not "opens java.lang" to unnamed module @17550481
 	at java.base/java.lang.reflect.AccessibleObject.throwInaccessibleObjectException(AccessibleObject.java:387)
@@ -267,7 +267,7 @@ java.lang.reflect.InaccessibleObjectException: Unable to make protected final ja
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
 
-Aug 17, 2023 6:44:52 PM org.hibernate.tuple.entity.PojoEntityTuplizer buildProxyFactory
+Aug 18, 2023 2:01:19 PM org.hibernate.tuple.entity.PojoEntityTuplizer buildProxyFactory
 WARN: HHH000305: Could not create proxy factory for:com.test.servlet.entity.Slot
 org.hibernate.HibernateException: HHH000142: Javassist Enhancement failed: com.test.servlet.entity.Slot
 	at org.hibernate.proxy.pojo.javassist.JavassistLazyInitializer.getProxyFactory(JavassistLazyInitializer.java:166)
@@ -328,7 +328,7 @@ Caused by: java.lang.reflect.InaccessibleObjectException: Unable to make protect
 	at org.hibernate.proxy.pojo.javassist.JavassistLazyInitializer.getProxyFactory(JavassistLazyInitializer.java:162)
 	... 41 more
 
-Aug 17, 2023 6:44:52 PM org.hibernate.proxy.pojo.javassist.JavassistLazyInitializer getProxyFactory
+Aug 18, 2023 2:01:19 PM org.hibernate.proxy.pojo.javassist.JavassistLazyInitializer getProxyFactory
 ERROR: HHH000142: Javassist Enhancement failed: com.test.servlet.entity.Consultant
 java.lang.reflect.InaccessibleObjectException: Unable to make protected final java.lang.Class java.lang.ClassLoader.defineClass(java.lang.String,byte[],int,int,java.security.ProtectionDomain) throws java.lang.ClassFormatError accessible: module java.base does not "opens java.lang" to unnamed module @17550481
 	at java.base/java.lang.reflect.AccessibleObject.throwInaccessibleObjectException(AccessibleObject.java:387)
@@ -386,7 +386,7 @@ java.lang.reflect.InaccessibleObjectException: Unable to make protected final ja
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
 
-Aug 17, 2023 6:44:52 PM org.hibernate.tuple.entity.PojoEntityTuplizer buildProxyFactory
+Aug 18, 2023 2:01:19 PM org.hibernate.tuple.entity.PojoEntityTuplizer buildProxyFactory
 WARN: HHH000305: Could not create proxy factory for:com.test.servlet.entity.Consultant
 org.hibernate.HibernateException: HHH000142: Javassist Enhancement failed: com.test.servlet.entity.Consultant
 	at org.hibernate.proxy.pojo.javassist.JavassistLazyInitializer.getProxyFactory(JavassistLazyInitializer.java:166)
@@ -447,7 +447,7 @@ Caused by: java.lang.reflect.InaccessibleObjectException: Unable to make protect
 	at org.hibernate.proxy.pojo.javassist.JavassistLazyInitializer.getProxyFactory(JavassistLazyInitializer.java:162)
 	... 41 more
 
-Aug 17, 2023 6:44:52 PM org.hibernate.proxy.pojo.javassist.JavassistLazyInitializer getProxyFactory
+Aug 18, 2023 2:01:19 PM org.hibernate.proxy.pojo.javassist.JavassistLazyInitializer getProxyFactory
 ERROR: HHH000142: Javassist Enhancement failed: com.test.servlet.entity.Appointment
 java.lang.reflect.InaccessibleObjectException: Unable to make protected final java.lang.Class java.lang.ClassLoader.defineClass(java.lang.String,byte[],int,int,java.security.ProtectionDomain) throws java.lang.ClassFormatError accessible: module java.base does not "opens java.lang" to unnamed module @17550481
 	at java.base/java.lang.reflect.AccessibleObject.throwInaccessibleObjectException(AccessibleObject.java:387)
@@ -505,7 +505,7 @@ java.lang.reflect.InaccessibleObjectException: Unable to make protected final ja
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
 
-Aug 17, 2023 6:44:52 PM org.hibernate.tuple.entity.PojoEntityTuplizer buildProxyFactory
+Aug 18, 2023 2:01:19 PM org.hibernate.tuple.entity.PojoEntityTuplizer buildProxyFactory
 WARN: HHH000305: Could not create proxy factory for:com.test.servlet.entity.Appointment
 org.hibernate.HibernateException: HHH000142: Javassist Enhancement failed: com.test.servlet.entity.Appointment
 	at org.hibernate.proxy.pojo.javassist.JavassistLazyInitializer.getProxyFactory(JavassistLazyInitializer.java:166)
@@ -566,45 +566,45 @@ Caused by: java.lang.reflect.InaccessibleObjectException: Unable to make protect
 	at org.hibernate.proxy.pojo.javassist.JavassistLazyInitializer.getProxyFactory(JavassistLazyInitializer.java:162)
 	... 41 more
 
-Aug 17, 2023 6:44:52 PM org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+Aug 18, 2023 2:01:19 PM org.hibernate.tool.hbm2ddl.SchemaUpdate execute
 INFO: HHH000228: Running hbm2ddl schema update
-Aug 17, 2023 6:44:52 PM org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+Aug 18, 2023 2:01:19 PM org.hibernate.tool.hbm2ddl.SchemaUpdate execute
 INFO: HHH000102: Fetching database metadata
-Aug 17, 2023 6:44:52 PM org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+Aug 18, 2023 2:01:19 PM org.hibernate.tool.hbm2ddl.SchemaUpdate execute
 INFO: HHH000396: Updating schema
-Aug 17, 2023 6:44:52 PM org.hibernate.tool.hbm2ddl.TableMetadata <init>
+Aug 18, 2023 2:01:19 PM org.hibernate.tool.hbm2ddl.TableMetadata <init>
 INFO: HHH000261: Table found: job_consultation.applicant
-Aug 17, 2023 6:44:52 PM org.hibernate.tool.hbm2ddl.TableMetadata <init>
+Aug 18, 2023 2:01:19 PM org.hibernate.tool.hbm2ddl.TableMetadata <init>
 INFO: HHH000037: Columns: [password, role, name, id, type, username]
-Aug 17, 2023 6:44:52 PM org.hibernate.tool.hbm2ddl.TableMetadata <init>
+Aug 18, 2023 2:01:19 PM org.hibernate.tool.hbm2ddl.TableMetadata <init>
 INFO: HHH000108: Foreign keys: []
-Aug 17, 2023 6:44:52 PM org.hibernate.tool.hbm2ddl.TableMetadata <init>
+Aug 18, 2023 2:01:19 PM org.hibernate.tool.hbm2ddl.TableMetadata <init>
 INFO: HHH000126: Indexes: [primary]
-Aug 17, 2023 6:44:52 PM org.hibernate.tool.hbm2ddl.TableMetadata <init>
+Aug 18, 2023 2:01:19 PM org.hibernate.tool.hbm2ddl.TableMetadata <init>
 INFO: HHH000261: Table found: job_consultation.consultant
-Aug 17, 2023 6:44:52 PM org.hibernate.tool.hbm2ddl.TableMetadata <init>
-INFO: HHH000037: Columns: [password, role, name, id, type, username]
-Aug 17, 2023 6:44:52 PM org.hibernate.tool.hbm2ddl.TableMetadata <init>
+Aug 18, 2023 2:01:19 PM org.hibernate.tool.hbm2ddl.TableMetadata <init>
+INFO: HHH000037: Columns: [password, role, isadmin, name, id, type, username]
+Aug 18, 2023 2:01:19 PM org.hibernate.tool.hbm2ddl.TableMetadata <init>
 INFO: HHH000108: Foreign keys: []
-Aug 17, 2023 6:44:52 PM org.hibernate.tool.hbm2ddl.TableMetadata <init>
+Aug 18, 2023 2:01:19 PM org.hibernate.tool.hbm2ddl.TableMetadata <init>
 INFO: HHH000126: Indexes: [primary]
-Aug 17, 2023 6:44:52 PM org.hibernate.tool.hbm2ddl.TableMetadata <init>
+Aug 18, 2023 2:01:19 PM org.hibernate.tool.hbm2ddl.TableMetadata <init>
 INFO: HHH000261: Table found: job_consultation.appointment
-Aug 17, 2023 6:44:52 PM org.hibernate.tool.hbm2ddl.TableMetadata <init>
+Aug 18, 2023 2:01:19 PM org.hibernate.tool.hbm2ddl.TableMetadata <init>
 INFO: HHH000037: Columns: [feedback, start_time, notes, applicant_id, end_time, consultant_id, id]
-Aug 17, 2023 6:44:52 PM org.hibernate.tool.hbm2ddl.TableMetadata <init>
+Aug 18, 2023 2:01:19 PM org.hibernate.tool.hbm2ddl.TableMetadata <init>
 INFO: HHH000108: Foreign keys: [fk_dgnlt5gq3uhoeg790pl6nxd2y, fk_9cdwkyjm2fwfiybcff39d8n77]
-Aug 17, 2023 6:44:52 PM org.hibernate.tool.hbm2ddl.TableMetadata <init>
+Aug 18, 2023 2:01:19 PM org.hibernate.tool.hbm2ddl.TableMetadata <init>
 INFO: HHH000126: Indexes: [fk_dgnlt5gq3uhoeg790pl6nxd2y, primary, fk_9cdwkyjm2fwfiybcff39d8n77]
-Aug 17, 2023 6:44:52 PM org.hibernate.tool.hbm2ddl.TableMetadata <init>
+Aug 18, 2023 2:01:19 PM org.hibernate.tool.hbm2ddl.TableMetadata <init>
 INFO: HHH000261: Table found: job_consultation.slot
-Aug 17, 2023 6:44:52 PM org.hibernate.tool.hbm2ddl.TableMetadata <init>
+Aug 18, 2023 2:01:19 PM org.hibernate.tool.hbm2ddl.TableMetadata <init>
 INFO: HHH000037: Columns: [start_time, booked, slot_id, consultant_id, end_time]
-Aug 17, 2023 6:44:52 PM org.hibernate.tool.hbm2ddl.TableMetadata <init>
+Aug 18, 2023 2:01:19 PM org.hibernate.tool.hbm2ddl.TableMetadata <init>
 INFO: HHH000108: Foreign keys: [slot_con_fk]
-Aug 17, 2023 6:44:52 PM org.hibernate.tool.hbm2ddl.TableMetadata <init>
+Aug 18, 2023 2:01:19 PM org.hibernate.tool.hbm2ddl.TableMetadata <init>
 INFO: HHH000126: Indexes: [slot_con_fk_idx, primary]
-Aug 17, 2023 6:44:52 PM org.hibernate.tool.hbm2ddl.SchemaUpdate execute
+Aug 18, 2023 2:01:19 PM org.hibernate.tool.hbm2ddl.SchemaUpdate execute
 INFO: HHH000232: Schema update complete
 ]]></system-err>
   </testcase>

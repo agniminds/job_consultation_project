@@ -59,6 +59,8 @@ public class LoginServlet extends HttpServlet {
             if (consultant.isAdmin()){
                 HttpSession httpSession = request.getSession(true);
                 httpSession.setAttribute("id", consultant.getId());
+                httpSession.setAttribute("userType", "admin");
+                consultant.setUserType("admin");
                 sendAsJson(response,consultant);
 
             }
@@ -66,6 +68,8 @@ public class LoginServlet extends HttpServlet {
 
                 HttpSession httpSession = request.getSession(true);
                 httpSession.setAttribute("id", consultant.getId());
+                httpSession.setAttribute("userType", "consultant");
+                consultant.setUserType("consultant");
                 sendAsJson(response,consultant);
 
             }
@@ -76,6 +80,8 @@ public class LoginServlet extends HttpServlet {
             System.out.println("Found applicant");
             HttpSession httpSession = request.getSession(true);
             httpSession.setAttribute("id", applicant.getId());
+            httpSession.setAttribute("userType", "applicant");
+            applicant.setUserType("applicant");
             sendAsJson(response, applicant);
 
         } else {

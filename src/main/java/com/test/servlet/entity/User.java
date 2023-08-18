@@ -30,6 +30,17 @@ public class User {
     @JsonIgnore
     private String password;
 
+    public String getUserType() {
+        return userType;
+    }
+
+    public void setUserType(String userType) {
+        this.userType = userType;
+    }
+
+    @Transient
+    private String userType;
+
     public String getType() {
         return type;
     }
