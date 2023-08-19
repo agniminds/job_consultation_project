@@ -54,12 +54,15 @@ public class AppoinmentServlet extends HttpServlet {
         System.out.println("-------- do get called ------");
 
         try {
-            String appoinmentId = request.getParameter("id");
 
-            if (appoinmentId != null) {
-                Appointment appointment = appoinmentDAO.getAppoinment(Integer.parseInt(appoinmentId));
-                System.out.println(appointment.getEndTime());
-                sendAsJson(response, appointment);
+
+            HttpSession httpSession = request.getSession();
+            int id = (Integer) httpSession.getAttribute("id");
+
+            if (id != 0) {
+                List <Appointment> listOfAppoinments= appoinmentDAO.findAppoinmentConsultantId(id);
+
+                sendAsJson(response, listOfAppoinments);
             } else {
                 response.sendError(HttpServletResponse.SC_BAD_REQUEST);
             }

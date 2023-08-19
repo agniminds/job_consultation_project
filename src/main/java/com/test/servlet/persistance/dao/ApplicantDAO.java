@@ -60,7 +60,7 @@ public class ApplicantDAO {
                 System.out.println("Couldn't find applicant");
             }
             // save the student object
-            session.merge(applicant);
+            session.merge(existingApplicant);
             // commit transaction
             transaction.commit();
         } catch (Exception e) {

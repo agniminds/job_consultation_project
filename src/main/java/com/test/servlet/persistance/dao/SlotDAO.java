@@ -187,4 +187,34 @@ public class SlotDAO {
         }
         return listOfSlots;
     }
+
+    public List<Slot> findSlotConsultantId(int id) {
+
+        Transaction transaction = null;
+        List <Slot> listOfSlots = null;
+        Session session ;
+
+        try{
+            session = HibernateUtil.getSessionFactory().openSession();
+            // start a transaction
+            transaction = session.beginTransaction();
+
+
+
+            String hql = "FROM Slot E WHERE E.consultant.id = :consultantId";
+            Query query = session.createQuery(hql);
+            query.setParameter("consultantId", id);
+            listOfSlots = query.list();
+            System.out.println(" ------------ got slot list based on consultant ot -------------");
+
+            transaction.commit();
+
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
+        return listOfSlots;
+    }
 }

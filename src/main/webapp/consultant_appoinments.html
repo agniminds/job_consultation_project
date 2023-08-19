@@ -13,6 +13,40 @@
 
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style_consultant.css" rel="stylesheet">
+    <script src="js/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            console.log("Consultant slots page has been loaded");
+
+            $.get("loggedinuserServlet", function (data) {
+                console.log("User data:", data);
+
+
+                console.log(data.id);
+
+                // Make an AJAX request to fetch consultant slots
+                $.get("appoinmentServlet", function (appoinments) {
+
+                    console.log("Consultant appoinments:", appoinments);
+
+                    // Iterate through the received slots and populate the table
+                    var appoinmentsTable = $("#appoinmentsTable");
+                    appoinmentsTable.find("tbody").empty();
+
+                    $.each(appoinments, function (index, appoinment) {
+                        var newRow = $("<tr>");
+                        newRow.append("<td>" + appoinment.id + "</td>");
+                        newRow.append("<td>" + appoinment.applicant.id + "</td>");
+                        newRow.append("<td>" + appoinment.startTime + "</td>");
+                        newRow.append("<td>" + appoinment.endTime + "</td>");
+
+                        appoinmentsTable.append(newRow);
+                    });
+                });
+            });
+        });
+    </script>
+
 
 </head>
 
@@ -36,7 +70,7 @@
 
             </ul>
             <br>
-            <table class="table table-bordered">
+            <table class="table table-bordered" id="appoinmentsTable">
                 <thead>
                 <tr class="table-active">
 
@@ -55,81 +89,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
 
-                    <td>
-                        TB - Monthly
-                    </td>
-                    <td>
-                        TB - Monthly
-                    </td>
-                    <td>
-                        01/04/2012
-                    </td>
-                    <td>
-                        Default
-                    </td>
-                </tr>
-                <tr >
-
-                    <td>
-                        TB - Monthly
-                    </td>
-                    <td>
-                        TB - Monthly
-                    </td>
-                    <td>
-                        01/04/2012
-                    </td>
-                    <td>
-                        Approved
-                    </td>
-                </tr>
-                <tr >
-
-                    <td>
-                        TB - Monthly
-                    </td>
-                    <td>
-                        TB - Monthly
-                    </td>
-                    <td>
-                        02/04/2012
-                    </td>
-                    <td>
-                        Declined
-                    </td>
-                </tr>
-                <tr >
-
-                    <td>
-                        TB - Monthly
-                    </td>
-                    <td>
-                        TB - Monthly
-                    </td>
-                    <td>
-                        03/04/2012
-                    </td>
-                    <td>
-                        Pending
-                    </td>
-                </tr>
-                <tr >
-
-                    <td>
-                        TB - Monthly
-                    </td>
-                    <td>
-                        TB - Monthly
-                    </td>
-                    <td>
-                        04/04/2012
-                    </td>
-                    <td>
-                        Call in to confirm
-                    </td>
-                </tr>
                 </tbody>
             </table>
         </div>

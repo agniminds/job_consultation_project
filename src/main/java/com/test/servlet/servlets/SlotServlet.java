@@ -15,6 +15,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -39,10 +40,11 @@ public class SlotServlet extends HttpServlet {
         System.out.println("-------- do get called ------");
 
         try {
-            String consultantName = request.getParameter("consultantName");
+            HttpSession httpSession = request.getSession();
+            int id = (Integer) httpSession.getAttribute("id");
 
-            if (consultantName != null) {
-                List<Slot> slots = slotDAO.findSlotConsultant(consultantName);
+            if (id != 0) {
+                List<Slot> slots = slotDAO.findSlotConsultantId(id);
                 System.out.println(slots);
                 sendAsJson(response, slots);
             } else {
@@ -62,6 +64,9 @@ public class SlotServlet extends HttpServlet {
 
         System.out.println("----------------");
 
+        HttpSession httpSession = request.getSession();
+        int id = (Integer) httpSession.getAttribute("id");
+
         try {
             StringBuilder buffer = new StringBuilder();
             BufferedReader reader = request.getReader();
@@ -80,7 +85,7 @@ public class SlotServlet extends HttpServlet {
 
             Slot slot = gson.fromJson(payload, Slot.class);
             ConsultantDAO consaltantDao = new ConsultantDAO();
-            Consultant consultant1 =consaltantDao.getUser(Integer.parseInt(slot.getConsultant_id()));
+            Consultant consultant1 =consaltantDao.getUser(id);
             slot.setConsultant(consultant1);
             System.out.println(slot.getConsultant());
             System.out.println(slot.getStartTime());

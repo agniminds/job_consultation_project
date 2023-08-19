@@ -13,6 +13,39 @@
 
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style_consultant.css" rel="stylesheet">
+    <script src="js/jquery.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            console.log("Consultant slots page has been loaded");
+
+            $.get("loggedinuserServlet", function (data) {
+                console.log("User data:", data);
+
+
+                console.log(data.id);
+
+                // Make an AJAX request to fetch consultant slots
+                $.get("slotServlet", function (slots) {
+
+                    console.log("Consultant slots:", slots);
+
+                    // Iterate through the received slots and populate the table
+                    var slotTable = $("#slotTable");
+                    slotTable.find("tbody").empty();
+
+                    $.each(slots, function (index, slot) {
+                        var newRow = $("<tr>");
+                        newRow.append("<td>" + slot.slotId + "</td>");
+                        newRow.append("<td>" + slot.startTime + "</td>");
+                        newRow.append("<td>" + slot.endTime + "</td>");
+
+                        slotTable.append(newRow);
+                    });
+                });
+            });
+        });
+    </script>
 
 </head>
 
@@ -22,24 +55,22 @@
         <div class="col-md-12">
             <ul class="nav">
                 <li class="nav-item">
-                    <a class="nav-link active" href="#">Home</a>
+                    <a class="nav-link active" href="/ServletSample/consultant.html">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Profile</a>
+                    <a class="nav-link" href="/ServletSample/consultant_profile.html">Profile</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Slots</a>
+                    <a class="nav-link" href="/ServletSample/consultant_slots.html">Slots</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Appoinments</a>
+                    <a class="nav-link" href="/ServletSample/consultant_appoinments.html">Appoinments</a>
                 </li>
-
 
             </ul>
 
-
             <br>
-            <table class="table table-bordered">
+            <table class="table table-bordered" id="slotTable">
                 <thead>
                 <tr class="table-active">
 
@@ -56,79 +87,18 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
 
-                    <td>
-                        TB - Monthly
-                    </td>
-                    <td>
-                        01/04/2012
-                    </td>
-                    <td>
-                        Default
-                    </td>
-
-                </tr>
-                <tr >
-
-                    <td>
-                        TB - Monthly
-                    </td>
-                    <td>
-                        01/04/2012
-                    </td>
-                    <td>
-                        Approved
-                    </td>
-
-                </tr>
-                <tr >
-
-                    <td>
-                        TB - Monthly
-                    </td>
-                    <td>
-                        02/04/2012
-                    </td>
-                    <td>
-                        Declined
-                    </td>
-
-                </tr>
-                <tr >
-
-                    <td>
-                        TB - Monthly
-                    </td>
-                    <td>
-                        03/04/2012
-                    </td>
-                    <td>
-                        Pending
-                    </td>
-
-                </tr>
-                <tr >
-
-                    <td>
-                        TB - Monthly
-                    </td>
-                    <td>
-                        04/04/2012
-                    </td>
-                    <td>
-                        Call in to confirm
-                    </td>
-
-                </tr>
                 </tbody>
             </table>
             <br>
             <form class="form-inline">
                 <input class="form-control mr-sm-2" type="text" VALUE="Enter Slot ID"/>
-                <button type="submit" class="btn btn-primary">
+                <a
+                        href="/ServletSample/consultant_slot_three.html"
+                        class="btn btn-success"
+                >
                     Update
-                </button>
+                </a>
 
                 <button type="submit" class="btn btn-primary">
                     Delete
@@ -136,9 +106,12 @@
 
             </form>
             <br>
-            <button class="btn btn-success" type="submit">
+            <a
+                    href="/ServletSample/consultant_slot_two.html"
+                    class="btn btn-success"
+            >
                 Add Slots
-            </button>
+            </a>
 
             <br>
 
