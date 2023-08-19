@@ -121,6 +121,69 @@ public class SlotServlet extends HttpServlet {
 
     }
 
+    protected void doPut(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+        System.out.println("----------------");
+
+        HttpSession httpSession = request.getSession();
+        int id = (Integer) httpSession.getAttribute("id");
+
+        try {
+            StringBuilder buffer = new StringBuilder();
+            BufferedReader reader = request.getReader();
+            String line;
+            while ((line = reader.readLine()) != null) {
+                buffer.append(line);
+            }
+
+            String payload = buffer.toString();
+            System.out.println(payload);
+
+            Gson gson = new GsonBuilder()
+                    .registerTypeAdapter(Date.class, new LocalDateTimeDeserializer())
+                    .setPrettyPrinting().create();
+
+
+            Slot slot = gson.fromJson(payload, Slot.class);
+            ConsultantDAO consaltantDao = new ConsultantDAO();
+            Consultant consultant1 =consaltantDao.getUser(id);
+            slot.setConsultant(consultant1);
+            System.out.println(slot.getConsultant());
+            System.out.println(slot.getStartTime());
+            System.out.println(slot.getEndTime());
+
+            /*LocalDateTime date2 = LocalDateTime.parse("15-8-2023 11:10:00",
+                    DateTimeFormatter.ofPattern("dd-M-yyyy hh:mm:ss").withLocale(Locale.ENGLISH));
+
+            System.out.println("------- testing ---------");
+            System.out.println(date2.toString());
+            System.out.println("--------testing----------");*/
+
+            SimpleDateFormat date1 = new SimpleDateFormat("dd-M-yyyy hh:mm:ss");
+
+            try {
+                Date dateCreated = date1.parse("15-8-2023 11:10:00");
+                System.out.println("------testing--------");
+                System.out.println(dateCreated.toLocaleString());
+            } catch (ParseException e) {
+                throw new RuntimeException(e);
+            }
+
+            //SimpleDateFormat date1 = new SimpleDateFormat("dd-M-yyyy hh:mm:ss");
+
+
+            slotDAO.updateSlot(slot);
+
+            sendAsJson(response, slot);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+    }
+
+
 
     private void sendAsJson(
             HttpServletResponse response,

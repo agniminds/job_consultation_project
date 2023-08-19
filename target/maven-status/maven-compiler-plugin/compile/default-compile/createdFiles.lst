@@ -2,6 +2,7 @@ com\test\servlet\servlets\UserServlet.class
 com\test\servlet\utility\HibernateProxyTypeAdapter.class
 com\test\servlet\DataPlaceHolderServlet.class
 com\test\servlet\persistance\dao\SlotDAO.class
+com\test\servlet\servlets\AllAppoinmentsServlet.class
 com\test\servlet\servlets\UserAppointmentServlet.class
 com\test\servlet\utility\HibernateProxyTypeAdapter$1.class
 com\test\servlet\servlets\SlotServlet.class
@@ -27,4 +28,5 @@ com\test\servlet\entity\User.class
 com\test\servlet\servlets\ConsultantServlet.class
 com\test\servlet\persistance\HibernateUtil.class
 com\test\servlet\servlets\AllConsultantServlet.class
+com\test\servlet\servlets\AllApplicantServlet.class
 com\test\servlet\servlets\LoginServlet.class

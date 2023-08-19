@@ -23,7 +23,9 @@ E:\Github\job_consultation_project\src\main\java\com\test\servlet\servlets\UserA
 E:\Github\job_consultation_project\src\main\java\com\test\servlet\utility\LocalDateTimeSerializer.java
 E:\Github\job_consultation_project\src\main\java\com\test\servlet\servlets\ConsultantServlet.java
 E:\Github\job_consultation_project\src\main\java\com\test\servlet\servlets\UserServlet.java
+E:\Github\job_consultation_project\src\main\java\com\test\servlet\servlets\AllAppoinmentsServlet.java
 E:\Github\job_consultation_project\src\main\java\com\test\servlet\persistance\HibernateUtil.java
+E:\Github\job_consultation_project\src\main\java\com\test\servlet\servlets\AllApplicantServlet.java
 E:\Github\job_consultation_project\src\main\java\com\test\servlet\persistance\dao\ConsultantDAO.java
 E:\Github\job_consultation_project\src\main\java\com\test\servlet\servlets\AppoinmentServlet.java
 E:\Github\job_consultation_project\src\main\java\com\test\servlet\DataPlaceHolderServlet.java

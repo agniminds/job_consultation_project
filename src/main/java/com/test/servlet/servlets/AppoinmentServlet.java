@@ -80,6 +80,9 @@ public class AppoinmentServlet extends HttpServlet {
 
         System.out.println("----------------");
 
+        HttpSession httpSession = request.getSession();
+        int id = (Integer) httpSession.getAttribute("id");
+
         try {
             HttpSession session = request.getSession();
 
@@ -112,7 +115,7 @@ public class AppoinmentServlet extends HttpServlet {
 
 
            // Applicant applicant = applicantDAO.getApplicant(userId);
-            Applicant applicant = applicantDAO.getApplicant(1);
+            Applicant applicant = applicantDAO.getApplicant(id);
             Appointment appointment = new Appointment();
             appointment.setApplicant(applicant);
 

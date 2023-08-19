@@ -204,7 +204,7 @@ public class AppoinmentDAO {
             transaction = session.beginTransaction();
             // get an user object
 
-            String hql = "FROM Appoinment";
+            String hql = "FROM Appointment";
             Query query = session.createQuery(hql);
             listOfAppoinment = query.list();
 

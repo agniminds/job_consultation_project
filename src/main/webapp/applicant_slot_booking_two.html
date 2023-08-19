@@ -16,42 +16,79 @@
     <script src="js/jquery.min.js"></script>
     <script src="js/jquery.min.js"></script>
 
-<script>
-    $(document).ready(function () {
+    <script>
+        $(document).ready(function () {
+            console.log("Applicant slots page has been loaded");
 
-        console.log("Applicant slots page has been loaded");
+            $.get("loggedinuserServlet", function (data) {
+                console.log("User data", data);
 
-        $.get("loggedinuserServlet", function (data) {
-            console.log("User data",data)
+                // Get the consultantId from the query parameter
+                var queryParams = new URLSearchParams(window.location.search);
+                var consultantId = queryParams.get("consultantId");
 
-            // Get the consultantId from the query parameter
-            var queryParams = new URLSearchParams(window.location.search);
-            var consultantId = queryParams.get("consultantId");
+                // Use the consultantId as needed on the page
+                console.log("Consultant ID:", consultantId);
 
-            // Use the consultantId as needed on the page
-            console.log("Consultant ID:", consultantId);
+                // Fetch and populate slots data for the specific consultant
+                $.get("slotServlet?id=" + consultantId, function (slots) {
+                    console.log("Consultant Slots:", slots);
 
-            // Fetch and populate slots data for the specific consultant
-            $.get("slotServlet?id=" + consultantId, function (slots) {
-                console.log("Consultant Slots:", slots);
+                    var slotTable = $("#slotTable");
+                    slotTable.find("tbody").empty();
 
-                var slotTable = $("#slotTable");
-                slotTable.find("tbody").empty();
+                    $.each(slots, function (index, slot) {
+                        var newRow = $("<tr>");
+                        newRow.append("<td>" + slot.slotId + "</td>");
+                        newRow.append("<td>" + slot.startTime + "</td>");
+                        newRow.append("<td>" + slot.endTime + "</td>");
+                        newRow.append("<td>" + slot.booked + "</td>");
 
-                $.each(slots, function (index, slot) {
-                    var newRow = $("<tr>");
-                    newRow.append("<td>" + slot.slotId + "</td>");
-                    newRow.append("<td>" + slot.startTime + "</td>");
-                    newRow.append("<td>" + slot.endTime + "</td>");
-                    newRow.append("<td>" + slot.booked + "</td>")
+                        slotTable.append(newRow);
+                    });
+                });
 
-                    slotTable.append(newRow);
+                $("#btn_book").on("click", function (event) {
+                    event.preventDefault();
+                    console.log($("#slotId").val());
+
+                    var myObject = new Object();
+                    myObject.slotId = $("#slotId").val();
+
+                    console.log(JSON.stringify(myObject));
+
+                    $.ajax({
+                        type: "POST",
+                        url: "http://localhost:8080/ServletSample/appoinmentServlet",
+                        data: JSON.stringify(myObject),
+                        success: function (response) {
+                            alert("Booking Added");
+
+
+                            $.get("slotServlet?id=" + consultantId, function (slots) {
+                                var slotTable = $("#slotTable");
+                                slotTable.find("tbody").empty();
+
+                                $.each(slots, function (index, slot) {
+                                    var newRow = $("<tr>");
+                                    newRow.append("<td>" + slot.slotId + "</td>");
+                                    newRow.append("<td>" + slot.startTime + "</td>");
+                                    newRow.append("<td>" + slot.endTime + "</td>");
+                                    newRow.append("<td>" + slot.booked + "</td>");
+
+                                    slotTable.append(newRow);
+                                });
+                            });
+                        },
+                        dataType: "json",
+                        error: function () {
+                            alert("Error!");
+                        },
+                    });
                 });
             });
         });
-
-    });
-</script>
+    </script>
 
 
 </head>
@@ -98,13 +135,14 @@
 
                 </tbody>
             </table>
-            <br>
+
+
             <form class="form-inline">
-                <input class="form-control mr-sm-2" type="text" />
-                <button class="btn btn-primary my-2 my-sm-0" type="submit">
+
+                <input class="form-control mr-sm-2" type="text" id="slotId" />
+                <button class="btn btn-primary my-2 my-sm-0" type="submit" id="btn_book">
                     Book
                 </button>
-
 
             </form>
 

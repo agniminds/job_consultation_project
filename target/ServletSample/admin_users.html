@@ -13,6 +13,63 @@
 
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style_consultant.css" rel="stylesheet">
+    <script src="js/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            console.log("Admin users page has been loaded");
+
+            $.get("loggedinuserServlet", function (data) {
+                console.log("User data:", data);
+
+
+                console.log(data.id);
+
+                // Make an AJAX request to fetch consultant slots
+                $.get("allconsultantServlet", function (consultants) {
+
+                    console.log("Consultants :", consultants);
+
+                    // Iterate through the received slots and populate the table
+                    var consultantTable = $("#consultantTable");
+                    consultantTable.find("tbody").empty();
+
+                    $.each(consultants, function (index, consultant) {
+                        var newRow = $("<tr>");
+                        newRow.append("<td>" + consultant.id + "</td>");
+                        newRow.append("<td>" + consultant.name + "</td>");
+                        newRow.append("<td>" + consultant.username + "</td>");
+                        newRow.append("<td>" + consultant.password + "</td>");
+                        newRow.append("<td>" + consultant.type + "</td>");
+                        newRow.append("<td>" + consultant.role + "</td>");
+
+                        consultantTable.append(newRow);
+                    });
+                });
+
+                $.get("allapplicantServlet", function (applicants) {
+
+                    console.log("Applicants:", applicants);
+
+                    // Iterate through the received slots and populate the table
+                    var applicantTable = $("#applicantTable");
+                    applicantTable.find("tbody").empty();
+
+                    $.each(applicants, function (index, applicant) {
+                        var newRow = $("<tr>");
+                        newRow.append("<td>" + applicant.id + "</td>");
+                        newRow.append("<td>" + applicant.name + "</td>");
+                        newRow.append("<td>" + applicant.username + "</td>");
+                        newRow.append("<td>" + applicant.password + "</td>");
+                        newRow.append("<td>" + applicant.type + "</td>");
+                        newRow.append("<td>" + applicant.role + "</td>");
+
+                        applicantTable.append(newRow);
+                    });
+                });
+            });
+        });
+    </script>
+
 
 </head>
 
@@ -46,12 +103,15 @@
                         </h5>
                         <div class="card-body">
                             <br>
-                            <table class="table table-bordered">
+                            <table class="table table-bordered" id="consultantTable">
                                 <thead>
                                 <tr class="table-active">
 
                                     <th>
                                         ID
+                                    </th>
+                                    <th>
+                                        NAME
                                     </th>
                                     <th>
                                         USERNAME
@@ -68,96 +128,7 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
 
-                                    <td>
-                                        TB - Monthly
-                                    </td>
-                                    <td>
-                                        01/04/2012
-                                    </td>
-                                    <td>
-                                        Default
-                                    </td>
-                                    <td>
-                                        Default
-                                    </td>
-                                    <td>
-                                        Default
-                                    </td>
-                                </tr>
-                                <tr >
-
-                                    <td>
-                                        TB - Monthly
-                                    </td>
-                                    <td>
-                                        01/04/2012
-                                    </td>
-                                    <td>
-                                        Approved
-                                    </td>
-                                    <td>
-                                        Approved
-                                    </td>
-                                    <td>
-                                        Default
-                                    </td>
-                                </tr>
-                                <tr >
-
-                                    <td>
-                                        TB - Monthly
-                                    </td>
-                                    <td>
-                                        02/04/2012
-                                    </td>
-                                    <td>
-                                        Declined
-                                    </td>
-                                    <td>
-                                        Declined
-                                    </td>
-                                    <td>
-                                        Default
-                                    </td>
-                                </tr>
-                                <tr >
-
-                                    <td>
-                                        TB - Monthly
-                                    </td>
-                                    <td>
-                                        03/04/2012
-                                    </td>
-                                    <td>
-                                        Pending
-                                    </td>
-                                    <td>
-                                        Declined
-                                    </td>
-                                    <td>
-                                        Default
-                                    </td>
-                                </tr>
-                                <tr >
-
-                                    <td>
-                                        TB - Monthly
-                                    </td>
-                                    <td>
-                                        04/04/2012
-                                    </td>
-                                    <td>
-                                        Call in to confirm
-                                    </td>
-                                    <td>
-                                        Declined
-                                    </td>
-                                    <td>
-                                        Default
-                                    </td>
-                                </tr>
                                 </tbody>
                             </table>
                             <form class="form-inline">
@@ -172,9 +143,12 @@
 
                             </form>
                             <br>
-                            <button class="btn btn-success" type="submit">
-                                Add Consultants
-                            </button>
+                            <a
+                                    href="/ServletSample/admin_add_consultant.html"
+                                    class="btn btn-success"
+                            >
+                                Add consultant
+                            </a>
 
                         </div>
                         <div class="card-footer">
@@ -197,12 +171,15 @@
                         </h5>
                         <div class="card-body">
                             <br>
-                            <table class="table table-bordered">
+                            <table class="table table-bordered" id="applicantTable">
                                 <thead>
                                 <tr class="table-active">
 
                                     <th>
                                         ID
+                                    </th>
+                                    <th>
+                                        NAME
                                     </th>
                                     <th>
                                         USERNAME
@@ -219,96 +196,7 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
 
-                                    <td>
-                                        TB - Monthly
-                                    </td>
-                                    <td>
-                                        01/04/2012
-                                    </td>
-                                    <td>
-                                        Default
-                                    </td>
-                                    <td>
-                                        Default
-                                    </td>
-                                    <td>
-                                        Default
-                                    </td>
-                                </tr>
-                                <tr >
-
-                                    <td>
-                                        TB - Monthly
-                                    </td>
-                                    <td>
-                                        01/04/2012
-                                    </td>
-                                    <td>
-                                        Approved
-                                    </td>
-                                    <td>
-                                        Approved
-                                    </td>
-                                    <td>
-                                        Default
-                                    </td>
-                                </tr>
-                                <tr >
-
-                                    <td>
-                                        TB - Monthly
-                                    </td>
-                                    <td>
-                                        02/04/2012
-                                    </td>
-                                    <td>
-                                        Declined
-                                    </td>
-                                    <td>
-                                        Declined
-                                    </td>
-                                    <td>
-                                        Default
-                                    </td>
-                                </tr>
-                                <tr >
-
-                                    <td>
-                                        TB - Monthly
-                                    </td>
-                                    <td>
-                                        03/04/2012
-                                    </td>
-                                    <td>
-                                        Pending
-                                    </td>
-                                    <td>
-                                        Declined
-                                    </td>
-                                    <td>
-                                        Default
-                                    </td>
-                                </tr>
-                                <tr >
-
-                                    <td>
-                                        TB - Monthly
-                                    </td>
-                                    <td>
-                                        04/04/2012
-                                    </td>
-                                    <td>
-                                        Call in to confirm
-                                    </td>
-                                    <td>
-                                        Declined
-                                    </td>
-                                    <td>
-                                        Default
-                                    </td>
-                                </tr>
                                 </tbody>
                             </table>
                             <form class="form-inline">
@@ -323,9 +211,12 @@
 
                             </form>
                             <br>
-                            <button class="btn btn-success" type="submit">
-                                Add Consultants
-                            </button>
+                            <a
+                                    href="/ServletSample/admin_add_applicant.html"
+                                    class="btn btn-success"
+                            >
+                                Add Applicant
+                            </a>
 
                         </div>
                         <div class="card-footer">

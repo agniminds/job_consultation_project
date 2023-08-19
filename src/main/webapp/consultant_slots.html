@@ -43,6 +43,22 @@
                         slotTable.append(newRow);
                     });
                 });
+
+                $("#btn_update").on("click", function (event) {
+                    event.preventDefault();
+                    var slotId = $("#slotId").val();
+
+
+                    window.location.href = "consultant_slot_three.html?slotId=" + slotId;
+                });
+
+                $("#btn_delete").on("click", function (event) {
+                    event.preventDefault();
+                    var slotId = $("#slotId").val();
+
+                    window.location.href = "consultant_slot_three_two.html?slotId=" + slotId;
+                });
+
             });
         });
     </script>
@@ -92,15 +108,12 @@
             </table>
             <br>
             <form class="form-inline">
-                <input class="form-control mr-sm-2" type="text" VALUE="Enter Slot ID"/>
-                <a
-                        href="/ServletSample/consultant_slot_three.html"
-                        class="btn btn-success"
-                >
+                <input class="form-control mr-sm-2" type="text" placeholder="Enter Slot ID" id="slotId"/>
+                <button type="submit" class="btn btn-primary" id="btn_update">
                     Update
-                </a>
+                </button>
 
-                <button type="submit" class="btn btn-primary">
+                <button type="submit" class="btn btn-primary" id="btn_delete">
                     Delete
                 </button>
 
