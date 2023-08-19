@@ -13,6 +13,78 @@
 
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style_consultant.css" rel="stylesheet">
+    <script src="js/jquery.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            console.log("Applicant slots page has been loaded");
+
+            $.get("loggedinuserServlet", function (data) {
+                console.log("User data:", data);
+
+                console.log(data.id);
+
+                // Make an AJAX request to fetch consultant slots
+                $.get("allconsultantServlet", function (slots) {
+
+                    console.log("Consultants:", slots);
+
+                    // Iterate through the received slots and populate the table
+                    var slotTable = $("#slotTable");
+                    slotTable.find("tbody").empty();
+
+                    $.each(slots, function (index, slot) {
+                        var newRow = $("<tr>");
+                        newRow.append("<td>" + slot.id + "</td>");
+                        newRow.append("<td>" + slot.name + "</td>");
+                        newRow.append("<td>" + slot.type + "</td>");
+                        newRow.append("<td>" + slot.role + "</td>");
+
+                        slotTable.append(newRow);
+                    });
+                });
+
+                $("#btn_search").on("click", function (event) {
+                    event.preventDefault();
+                    console.log($("#name").val());
+                    var myObject = new Object();
+                    myObject.name = $("#name").val();
+                    console.log(JSON.stringify(myObject));
+                    $.ajax({
+                        type: "POST",
+                        url: "http://localhost:8080/ServletSample/findconsultantServlet",
+                        data: JSON.stringify(myObject),
+                        success: function (consultants) {
+                            console.log("Search results:", consultants);
+                            var slotTable = $("#slotTable");
+                            slotTable.find("tbody").empty();
+
+                            var newRow = $("<tr>");
+                            newRow.append("<td>" + consultants.id + "</td>");
+                            newRow.append("<td>" + consultants.name + "</td>");
+                            newRow.append("<td>" + consultants.type + "</td>");
+                            newRow.append("<td>" + consultants.role + "</td>");
+
+                            slotTable.append(newRow);
+                        },
+                        dataType: "json",
+                        error: function () {
+                            alert("error!");
+                        },
+                    });
+                });
+
+                $("#btn_book").on("click", function (event) {
+                    event.preventDefault();
+                    var consultantId = $("#consultantId").val();
+
+                    // Redirect to the "appoinment_slot_booking_two.html" page with the consultant ID as a query parameter
+                    window.location.href = "applicant_slot_booking_two.html?consultantId=" + consultantId;
+                });
+            });
+        });
+    </script>
+
 
 </head>
 
@@ -22,31 +94,31 @@
         <div class="col-md-12">
             <ul class="nav">
                 <li class="nav-item">
-                    <a class="nav-link active" href="#">Home</a>
+                    <a class="nav-link active" href="/ServletSample/applicant.html">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Profile</a>
+                    <a class="nav-link" href="/ServletSample/applicant_profile.html">Profile</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Slots</a>
+                    <a class="nav-link" href="/ServletSample/applicant_slot_booking_one.html">Slots</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Appoinments</a>
+                    <a class="nav-link" href="/ServletSample/appoinment.html">Appoinments</a>
                 </li>
 
 
             </ul>
             <br>
             <form class="form-inline">
-                <input class="form-control mr-sm-2" type="text" value="Consultant name"/>
-                <button class="btn btn-primary my-2 my-sm-0" type="submit">
+                <input class="form-control mr-sm-2" type="text" id="name" placeholder="Consultant name"/>
+                <button class="btn btn-primary my-2 my-sm-0" id="btn_search" type="submit">
                     Search
                 </button>
 
 
             </form>
             <br>
-            <table class="table table-bordered">
+            <table class="table table-bordered" id="slotTable">
                 <thead>
                 <tr class="table-active">
 
@@ -65,87 +137,14 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
 
-                    <td>
-                        TB - Monthly
-                    </td>
-                    <td>
-                        01/04/2012
-                    </td>
-                    <td>
-                        Default
-                    </td>
-                    <td>
-                        Default
-                    </td>
-                </tr>
-                <tr >
 
-                    <td>
-                        TB - Monthly
-                    </td>
-                    <td>
-                        01/04/2012
-                    </td>
-                    <td>
-                        Approved
-                    </td>
-                    <td>
-                        Approved
-                    </td>
-                </tr>
-                <tr >
-
-                    <td>
-                        TB - Monthly
-                    </td>
-                    <td>
-                        02/04/2012
-                    </td>
-                    <td>
-                        Declined
-                    </td>
-                    <td>
-                        Declined
-                    </td>
-                </tr>
-                <tr >
-
-                    <td>
-                        TB - Monthly
-                    </td>
-                    <td>
-                        03/04/2012
-                    </td>
-                    <td>
-                        Pending
-                    </td>
-                    <td>
-                        Declined
-                    </td>
-                </tr>
-                <tr >
-
-                    <td>
-                        TB - Monthly
-                    </td>
-                    <td>
-                        04/04/2012
-                    </td>
-                    <td>
-                        Call in to confirm
-                    </td>
-                    <td>
-                        Declined
-                    </td>
-                </tr>
                 </tbody>
             </table>
             <br>
             <form class="form-inline">
-                <input class="form-control mr-sm-2" type="text" VALUE="Enter Consultant ID"/>
-                <button class="btn btn-success" type="submit">
+                <input class="form-control mr-sm-2" type="text" placeholder="Enter Consultant ID" id="consultantId"/>
+                <button class="btn btn-success" id="btn_book" type="submit">
                     Book
                 </button>
 

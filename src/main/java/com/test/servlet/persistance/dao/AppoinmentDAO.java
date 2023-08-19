@@ -163,6 +163,34 @@ public class AppoinmentDAO {
         return listOfAppoinment;
     }
 
+    public List<Appointment> findAppoinmentApplicantId(int id) {
+
+        Transaction transaction = null;
+        List <Appointment> listOfAppoinment = null;
+        Session session ;
+        try{
+            session = HibernateUtil.getSessionFactory().openSession();
+            // start a transaction
+            transaction = session.beginTransaction();
+
+            String hql = "FROM Appointment E WHERE E.applicant.id = :consultantId";
+            Query query = session.createQuery(hql);
+            query.setParameter("consultantId", id);
+            listOfAppoinment = query.list();
+
+
+            transaction.commit();
+
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
+        return listOfAppoinment;
+    }
+
+
     // creating the query for getting all appoinments
 
     public List <Appointment> getAllAppoinments() {

@@ -22,7 +22,7 @@ import java.io.PrintWriter;
 import java.util.Date;
 import java.util.List;
 
-@WebServlet(name = "LoggedInUserServlet", urlPatterns = "/loggedinuserServlet")
+@WebServlet(name = "AllConsultantServlet", urlPatterns = "/allconsultantServlet")
 
 public class AllConsultantServlet extends HttpServlet {
 
