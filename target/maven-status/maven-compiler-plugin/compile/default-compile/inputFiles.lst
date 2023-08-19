@@ -13,6 +13,7 @@ E:\Github\job_consultation_project\src\main\java\com\test\servlet\servlets\AllCo
 E:\Github\job_consultation_project\src\main\java\com\test\servlet\servlets\LoggedInUserServlet.java
 E:\Github\job_consultation_project\src\main\java\com\test\servlet\EnvironmentVariableServlet.java
 E:\Github\job_consultation_project\src\main\java\com\test\servlet\TestDataPlaceHolderServlet.java
+E:\Github\job_consultation_project\src\main\java\com\test\servlet\servlets\UniConsultantServlet.java
 E:\Github\job_consultation_project\src\main\java\com\test\servlet\entity\Applicant.java
 E:\Github\job_consultation_project\src\main\java\com\test\servlet\TestSessionServlet.java
 E:\Github\job_consultation_project\src\main\java\com\test\servlet\servlets\LoginServlet.java

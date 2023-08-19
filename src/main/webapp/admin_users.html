@@ -66,6 +66,15 @@
                         applicantTable.append(newRow);
                     });
                 });
+
+                $("#consultantForm").submit(function (event) {
+                    event.preventDefault();
+
+                    var consultantId = $("#consultantId").val();
+
+                    window.location.href = "admin_update_consultant.html?consultantId=" + consultantId;
+                });
+
             });
         });
     </script>
@@ -131,9 +140,9 @@
 
                                 </tbody>
                             </table>
-                            <form class="form-inline">
-                                <input class="form-control mr-sm-2" type="text" VALUE="Enter Consultant ID"/>
-                                <button type="submit" class="btn btn-primary">
+                            <form class="form-inline" id="consultantForm">
+                                <input class="form-control mr-sm-2" type="text" placeholder="Enter Consultant ID" id="consultantId"/>
+                                <button type="submit" class="btn btn-primary" id="btn_con_update">
                                     Update
                                 </button>
 
@@ -199,9 +208,9 @@
 
                                 </tbody>
                             </table>
-                            <form class="form-inline">
-                                <input class="form-control mr-sm-2" type="text" VALUE="Enter User ID"/>
-                                <button type="submit" class="btn btn-primary">
+                            <form class="form-inline" id="applicantForm">
+                                <input class="form-control mr-sm-2" type="text" placeholder="Enter User ID" id="applicantId"/>
+                                <button type="submit" class="btn btn-primary" id="btn_app_update">
                                     Update
                                 </button>
 
