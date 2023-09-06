@@ -57,6 +57,10 @@ public class UserAppointmentServlet extends HttpServlet {
     }
 
 
+
+
+
+
     private void sendAsJson(
             HttpServletResponse response,
             Object obj) throws IOException {

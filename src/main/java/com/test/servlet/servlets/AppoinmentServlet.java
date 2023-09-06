@@ -109,7 +109,7 @@ public class AppoinmentServlet extends HttpServlet {
                     .setPrettyPrinting().create();
 
             JsonObject jsonObject = gson.fromJson(payload, JsonObject.class);
-            int slotId = jsonObject.get("id").getAsInt();
+            int slotId = jsonObject.get("slotId").getAsInt();
 
             Slot slot = slotDAO.getSlotUpdateAsBooked(slotId);
 
