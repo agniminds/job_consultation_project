@@ -6,6 +6,7 @@ E:\Github\job_consultation_project\src\main\java\com\test\servlet\servlets\Appli
 E:\Github\job_consultation_project\src\main\java\com\test\servlet\persistance\dao\AppoinmentDAO.java
 E:\Github\job_consultation_project\src\main\java\com\test\servlet\LogoutServlet.java
 E:\Github\job_consultation_project\src\main\java\com\test\servlet\entity\User.java
+E:\Github\job_consultation_project\src\main\java\com\test\servlet\servlets\UniSlotServlet.java
 E:\Github\job_consultation_project\src\main\java\com\test\servlet\entity\Slot.java
 E:\Github\job_consultation_project\src\main\java\com\test\servlet\entity\Appointment.java
 E:\Github\job_consultation_project\src\main\java\com\test\servlet\FirstServlet.java
@@ -27,6 +28,7 @@ E:\Github\job_consultation_project\src\main\java\com\test\servlet\servlets\UserS
 E:\Github\job_consultation_project\src\main\java\com\test\servlet\servlets\AllAppoinmentsServlet.java
 E:\Github\job_consultation_project\src\main\java\com\test\servlet\persistance\HibernateUtil.java
 E:\Github\job_consultation_project\src\main\java\com\test\servlet\servlets\AllApplicantServlet.java
+E:\Github\job_consultation_project\src\main\java\com\test\servlet\servlets\UniApplicantServlet.java
 E:\Github\job_consultation_project\src\main\java\com\test\servlet\persistance\dao\ConsultantDAO.java
 E:\Github\job_consultation_project\src\main\java\com\test\servlet\servlets\AppoinmentServlet.java
 E:\Github\job_consultation_project\src\main\java\com\test\servlet\DataPlaceHolderServlet.java

@@ -38,7 +38,9 @@ public class ApplicantDAO {
         // create
     }
 
-    public void updateApplicant(int applicantId, Applicant applicant) {
+    public Applicant updateApplicant(int applicantId, Applicant applicant) {
+
+
 
         Transaction transaction = null;
         Session session ;
@@ -48,11 +50,12 @@ public class ApplicantDAO {
             transaction = session.beginTransaction();
 
             // getting the existing consultant object
-            Applicant existingApplicant = (Applicant) session.get(Applicant.class, applicantId);
+             Applicant existingApplicant = (Applicant) session.get(Applicant.class, applicantId);
 
             if (existingApplicant != null){
                 existingApplicant.setName(applicant.getName());
                 existingApplicant.setPassword(applicant.getPassword());
+                existingApplicant.setUsername(applicant.getUsername());
                 existingApplicant.setRole(applicant.getRole());
                 existingApplicant.setType(applicant.getType());
             }
@@ -63,12 +66,15 @@ public class ApplicantDAO {
             session.merge(existingApplicant);
             // commit transaction
             transaction.commit();
+            return existingApplicant;
+
         } catch (Exception e) {
             if (transaction != null) {
                 transaction.rollback();
             }
             e.printStackTrace();
         }
+        return null;
 
     }
 

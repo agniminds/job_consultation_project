@@ -1,6 +1,7 @@
 package com.test.servlet.persistance.dao;
 
 import com.test.servlet.entity.Appointment;
+import com.test.servlet.entity.Consultant;
 import com.test.servlet.entity.Slot;
 import com.test.servlet.persistance.HibernateUtil;
 import org.hibernate.Query;
@@ -39,7 +40,7 @@ public class SlotDAO {
             session = HibernateUtil.getSessionFactory().openSession();
             // start a transaction
             transaction = session.beginTransaction();
-            // save the student object
+
             session.update(slot);
             // commit transaction
             transaction.commit();
@@ -217,4 +218,40 @@ public class SlotDAO {
         }
         return listOfSlots;
     }
+
+    public Slot updateSlotReturn(int slotId,Slot slot) {
+        System.out.println(slot.getSlotId());
+        Transaction transaction = null;
+        Session session ;
+        try{
+            session = HibernateUtil.getSessionFactory().openSession();
+            // start a transaction
+            transaction = session.beginTransaction();
+
+            Slot existingSlot = (Slot) session.get(Slot.class, slotId);
+
+            if (existingSlot != null){
+
+                existingSlot.setStartTime(slot.getStartTime());
+                existingSlot.setStartTime(slot.getEndTime());
+
+            }
+            else {
+                System.out.println("Couldn't find slot");
+            }
+
+            session.update(existingSlot);
+            // commit transaction
+            transaction.commit();
+
+            return existingSlot;
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 }

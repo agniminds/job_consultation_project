@@ -1,6 +1,7 @@
 com\test\servlet\servlets\UserServlet.class
 com\test\servlet\utility\HibernateProxyTypeAdapter.class
 com\test\servlet\DataPlaceHolderServlet.class
+com\test\servlet\servlets\UniSlotServlet.class
 com\test\servlet\persistance\dao\SlotDAO.class
 com\test\servlet\servlets\AllAppoinmentsServlet.class
 com\test\servlet\servlets\UserAppointmentServlet.class
@@ -18,6 +19,7 @@ com\test\servlet\LogoutServlet.class
 com\test\servlet\EnvironmentVariableServlet.class
 com\test\servlet\persistance\dao\ApplicantDAO.class
 com\test\servlet\entity\Applicant.class
+com\test\servlet\servlets\UniApplicantServlet.class
 com\test\servlet\TestSessionServlet.class
 com\test\servlet\servlets\FindConsultantServlet.class
 com\test\servlet\entity\Slot.class

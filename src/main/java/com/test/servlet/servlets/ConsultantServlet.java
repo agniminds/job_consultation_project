@@ -73,23 +73,27 @@ public class ConsultantServlet extends HttpServlet {
 
         System.out.println("------------------");
 
-        StringBuilder buffer = new StringBuilder();
-        BufferedReader reader = request.getReader();
-        String line;
-        while ((line = reader.readLine()) != null) {
-            buffer.append(line);
+        try {
+            String consultantIdParam = request.getParameter("consultantId");
+
+            if (consultantIdParam != null) {
+                int consultantId = Integer.parseInt(consultantIdParam);
+
+                consultantDAO.deleteUser(consultantId);
+
+
+                response.setStatus(HttpServletResponse.SC_OK);
+                response.getWriter().println("Consultant deleted successfully");
+            } else {
+                response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Missing consultantId parameter");
+            }
+
+        } catch (NumberFormatException e) {
+            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Invalid consultantId parameter");
+        } catch (Exception e) {
+            e.printStackTrace();
+            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Error deleting consultant");
         }
-
-        String payload = buffer.toString();
-        Gson _gson = new Gson();
-
-        Consultant model = _gson.fromJson(payload, Consultant.class);
-
-        System.out.println("id : " + model.getId());
-
-        consultantDAO.deleteUser(model.getId());
-
-        sendAsJson(response, model);
 
     }
 

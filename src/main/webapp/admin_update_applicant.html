@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Update Applicant </title>
+
+    <meta name="description" content="Source code generated using layoutit.com">
+    <meta name="author" content="LayoutIt!">
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style_consultant.css" rel="stylesheet">
+    <script src="js/jquery.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            console.log("Admin add applicant loaded");
+
+            function getQueryParam(param) {
+                var urlParams = new URLSearchParams(window.location.search);
+                return urlParams.get(param);
+            }
+
+
+            var applicantId = getQueryParam("applicantId");
+
+
+            console.log("Applicant ID:", applicantId);
+
+            //$.get("loggedinuserServlet", function (data) {
+            //console.log("User data:", data);
+
+            $.get("http://localhost:8080/ServletSample/uniapplicantServlet?applicantId=" + applicantId, function (consultantData) {
+
+
+                console.log("printing consultant name");
+                console.log(consultantData.name);
+
+                $("#name").val(consultantData.name);
+                $("#username").val(consultantData.username);
+                $("#password").val(consultantData.password);
+                $("#role").val(consultantData.role);
+                $("#type").val(consultantData.type);
+            });
+
+
+
+
+            $("#btn_update").on("click", function (event) {
+                event.preventDefault();
+
+                var myObject = new Object();
+                myObject.name = $("#name").val();
+                myObject.username = $("#username").val();
+                myObject.password = $("#password").val();
+                myObject.role = $("#role").val();
+                myObject.type = $("#type").val();
+
+                console.log(JSON.stringify(myObject));
+
+                $.ajax({
+                    type: "PUT",
+                    url: "http://localhost:8080/ServletSample/uniapplicantServlet?applicantId="+applicantId,
+                    data: JSON.stringify(myObject),
+                    success: function (response) {
+                        alert(" Applicant Updated successfully");
+                    },
+                    dataType: "json",
+                    error: function () {
+                        alert("Error!");
+                    },
+                })
+            });
+
+            //});
+        });
+    </script>
+
+
+</head>
+
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <ul class="nav">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Slots</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Appoinments</a>
+                </li>
+
+
+            </ul>
+            <br>
+            <br>
+
+            <form role="form">
+                <div class="form-group">
+
+                    <label for="name">
+                        NAME
+                    </label>
+                    <input type="text" class="form-control" id="name" />
+                </div>
+                <div class="form-group">
+
+                    <label for="username">
+                        USERNAME
+                    </label>
+                    <input type="text" class="form-control" id="username" />
+                </div>
+                <div class="form-group">
+
+                    <label for="password">
+                        PASSWORD
+                    </label>
+                    <input type="text" class="form-control" id="password" />
+                </div>
+                <div class="role">
+
+                    <label for="role">
+                        ROLE
+                    </label>
+                    <input type="text" class="form-control" id="role" />
+                </div>
+                <div class="type">
+
+                    <label for="role">
+                        TYPE
+                    </label>
+                    <input type="text" class="form-control" id="type" />
+                </div>
+                <br>
+
+                <button type="submit" class="btn btn-primary" id="btn_update" >
+                    Update Consultant
+                </button>
+
+            </form>
+
+            <br>
+
+            <br>
+            <a
+                    href="/ServletSample/admin_users.html"
+                    class="btn btn-success"
+            >
+                Go Back
+            </a>
+
+            <br>
+
+            <!--<form class="row g-3">
+                <div class="col-auto">
+                    <label for="staticEmail2" class="visually-hidden">Email</label>
+                    <input type="text" readonly class="form-control-plaintext" id="staticEmail2" value="Enter slot id here">
+                </div>
+
+                <div class="col-auto">
+                    <button type="submit" class="btn btn-primary mb-3">Confirm identity</button>
+                </div>
+            </form>
+            -->
+        </div>
+    </div>
+</div>
+</body>
+</html>

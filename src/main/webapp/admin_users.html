@@ -75,6 +75,109 @@
                     window.location.href = "admin_update_consultant.html?consultantId=" + consultantId;
                 });
 
+                $("#applicantForm").submit(function (event) {
+                    event.preventDefault();
+
+                    var applicantId = $("#applicantId").val();
+
+                    window.location.href = "admin_update_applicant.html?applicantId=" + applicantId;
+                });
+
+                $("#consultant_btn_delete").on("click", function (event) {
+                    event.preventDefault();
+                    var consultantId = $("#consultantId").val();
+
+                    $.ajax({
+                        type: "DELETE",
+                        url: "http://localhost:8080/ServletSample/consultantServlet?consultantId=" + consultantId,
+
+                        success: function (response) {
+
+                            console.log(data.id);
+
+                            $.get("allconsultantServlet", function (consultants) {
+
+                                console.log("Consultant data :", consultants);
+
+                                // Iterate through the received slots and populate the table
+                                var consultantTable = $("#consultantTable");
+                                consultantTable.find("tbody").empty();
+
+                                $.each(consultants, function (index, consultant) {
+                                    var newRow = $("<tr>");
+                                    newRow.append("<td>" + consultant.id + "</td>");
+                                    newRow.append("<td>" + consultant.name + "</td>");
+                                    newRow.append("<td>" + consultant.username + "</td>");
+                                    newRow.append("<td>" + consultant.password + "</td>");
+                                    newRow.append("<td>" + consultant.type + "</td>");
+                                    newRow.append("<td>" + consultant.role + "</td>");
+
+                                    consultantTable.append(newRow);
+                                });
+                            });
+
+                            alert("Consultant deleted successfully");
+
+
+                        },
+                        error: function () {
+
+                            alert("Error deleting consultant ");
+
+                        },
+                    });
+
+
+                });
+
+                $("#applicant_btn_delete").on("click", function (event) {
+                    event.preventDefault();
+                    var applicantId = $("#applicantId").val();
+
+                    $.ajax({
+                        type: "DELETE",
+                        url: "http://localhost:8080/ServletSample/applicantServlet?applicantId=" + applicantId,
+
+                        success: function (response) {
+
+                            console.log(data.id);
+
+                            $.get("allapplicantServlet", function (applicants) {
+
+                                console.log("Consultant data :", applicants);
+
+                                // Iterate through the received slots and populate the table
+                                var applicantTable = $("#applicantTable");
+                                applicantTable.find("tbody").empty();
+
+                                $.each(applicants, function (index, applicant) {
+                                    var newRow = $("<tr>");
+                                    newRow.append("<td>" + applicant.id + "</td>");
+                                    newRow.append("<td>" + applicant.name + "</td>");
+                                    newRow.append("<td>" + applicant.username + "</td>");
+                                    newRow.append("<td>" + applicant.password + "</td>");
+                                    newRow.append("<td>" + applicant.type + "</td>");
+                                    newRow.append("<td>" + applicant.role + "</td>");
+
+                                    applicantTable.append(newRow);
+                                });
+                            });
+
+                            alert("Applicant deleted successfully");
+
+
+                        },
+                        error: function () {
+
+                            alert("Error deleting applicant ");
+
+                        },
+                    });
+
+
+                });
+
+
             });
         });
     </script>
@@ -146,7 +249,7 @@
                                     Update
                                 </button>
 
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-primary" id="consultant_btn_delete">
                                     Delete
                                 </button>
 
@@ -214,7 +317,7 @@
                                     Update
                                 </button>
 
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-primary" id="applicant_btn_delete">
                                     Delete
                                 </button>
 

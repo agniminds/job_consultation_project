@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Date;
@@ -41,8 +42,10 @@ public class UniConsultantServlet extends HttpServlet {
 
 
         try{
-            HttpSession httpSession = req.getSession();
-            int id = (Integer) httpSession.getAttribute("id");
+           // HttpSession httpSession = req.getSession();
+            //int id = (Integer) httpSession.getAttribute("id");
+
+            int id = Integer.parseInt(req.getParameter("consultantId"));
 
             Consultant consultant = consultantDAO.getUser(id);
 
@@ -55,6 +58,36 @@ public class UniConsultantServlet extends HttpServlet {
         }catch (Exception e){
             e.printStackTrace();
         }
+
+    }
+
+    protected void doPut(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException{
+
+
+        int id = Integer.parseInt(request.getParameter("consultantId"));
+
+        System.out.println(id);
+
+        StringBuilder buffer = new StringBuilder();
+        BufferedReader reader = request.getReader();
+        String line;
+        while ((line = reader.readLine()) != null) {
+            buffer.append(line);
+        }
+
+        String payload = buffer.toString();
+        Gson _gson = new Gson();
+
+        Consultant model = _gson.fromJson(payload, Consultant.class);
+
+        System.out.println("id : " + model.getId());
+
+        Consultant updatedConsultant = consultantDAO.updateUser(id, model);
+
+        sendAsJson(response, updatedConsultant);
+
+
 
     }
 

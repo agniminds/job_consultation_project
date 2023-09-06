@@ -27,11 +27,11 @@
 
                 console.log(slotId)
 
-                $.get("slotServlet", function (response) {
+                $.get("http://localhost:8080/ServletSample/unislotServlet?slotId=" + slotId,function (response){
 
                     console.log("Servlet response",response);
 
-                    $("#startTime").html(response.startTime);
+                    $("#startTime").val(response.startTime);
                     $("#endTime").val(response.endTime);
 
 
@@ -48,7 +48,7 @@
 
                     $.ajax({
                         type: "PUT",
-                        url: "http://localhost:8080/ServletSample/slotServlet",
+                        url: "http://localhost:8080/ServletSample/unislotServlet?slotId="+slotId,
                         data: JSON.stringify(myObject),
                         success: function (response) {
                             alert("Slot data updated successfully");
@@ -57,11 +57,7 @@
                         error: function () {
                             alert("Error!");
                         },
-                    }).done(function (data) {
-                        $("#startTime").val(data.startTime);
-                        $("#endTime").val(data.endTime);
-
-                    });
+                    })
                 });
 
             });
@@ -121,7 +117,7 @@
 
             <br>
             <a
-                    href="/ServletSample/consultant_slot_two.html"
+                    href="/ServletSample/consultant_slots.html"
                     class="btn btn-success"
             >
                 Go Back

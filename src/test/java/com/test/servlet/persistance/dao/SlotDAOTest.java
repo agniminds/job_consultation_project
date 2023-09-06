@@ -14,7 +14,7 @@ public class SlotDAOTest extends TestCase {
     public void testFindSlotConsultant() {
 
         Assert.assertTrue(true);
-       /* SlotDAO slotDAO = new SlotDAO();
+        /*SlotDAO slotDAO = new SlotDAO();
         List<Slot> listOfSlots = slotDAO.findSlotConsultant("john doe");
 
         for(int i = 0; i < listOfSlots.size(); i++){

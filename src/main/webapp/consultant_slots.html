@@ -48,7 +48,6 @@
                     event.preventDefault();
                     var slotId = $("#slotId").val();
 
-
                     window.location.href = "consultant_slot_three.html?slotId=" + slotId;
                 });
 
@@ -56,7 +55,44 @@
                     event.preventDefault();
                     var slotId = $("#slotId").val();
 
-                    window.location.href = "consultant_slot_three_two.html?slotId=" + slotId;
+                    $.ajax({
+                        type: "DELETE",
+                        url: "http://localhost:8080/ServletSample/slotServlet?slotId=" + slotId,
+
+                        success: function (response) {
+
+                            console.log(data.id);
+
+                            $.get("slotServlet", function (slots) {
+
+                                console.log("Consultant slots:", slots);
+
+                                // Iterate through the received slots and populate the table
+                                var slotTable = $("#slotTable");
+                                slotTable.find("tbody").empty();
+
+                                $.each(slots, function (index, slot) {
+                                    var newRow = $("<tr>");
+                                    newRow.append("<td>" + slot.slotId + "</td>");
+                                    newRow.append("<td>" + slot.startTime + "</td>");
+                                    newRow.append("<td>" + slot.endTime + "</td>");
+
+                                    slotTable.append(newRow);
+                                });
+                            });
+
+                            alert("Slot deleted successfully");
+
+
+                        },
+                        error: function () {
+
+                            alert("Error deleting slot with ID " + slotId);
+
+                        },
+                    });
+
+
                 });
 
             });

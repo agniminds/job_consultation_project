@@ -8,7 +8,7 @@ public class ApplicantDAOTest extends TestCase {
 
     public void testFindApplicant() {
 
-       /* ApplicantDAO applicantDAO = new ApplicantDAO();
+        /*ApplicantDAO applicantDAO = new ApplicantDAO();
         Applicant applicant = applicantDAO.getApplicant(1);
         System.out.println(applicant.getName());*/
 

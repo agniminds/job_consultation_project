@@ -30,10 +30,14 @@
 
             console.log("Consultant ID:", consultantId);
 
-            $.get("loggedinuserServlet", function (data) {
-                console.log("User data:", data);
+            //$.get("loggedinuserServlet", function (data) {
+                //console.log("User data:", data);
 
-                $.get("http://localhost:8080/ServletSample/uniconsultantServlet?id=" + consultantId, function (consultantData) {
+                $.get("http://localhost:8080/ServletSample/uniconsultantServlet?consultantId=" + consultantId, function (consultantData) {
+
+
+                    console.log("printing consultant name");
+                    console.log(consultantData.name);
 
                     $("#name").val(consultantData.name);
                     $("#username").val(consultantData.username);
@@ -59,7 +63,7 @@
 
                     $.ajax({
                         type: "PUT",
-                        url: "http://localhost:8080/ServletSample/consultantServlet?id="+consultantId,
+                        url: "http://localhost:8080/ServletSample/uniconsultantServlet?consultantId="+consultantId,
                         data: JSON.stringify(myObject),
                         success: function (response) {
                             alert(" Consultant Updated successfully");
@@ -71,7 +75,7 @@
                     })
                 });
 
-            });
+            //});
         });
     </script>
 

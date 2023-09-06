@@ -184,6 +184,37 @@ public class SlotServlet extends HttpServlet {
     }
 
 
+    protected void doDelete(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+        System.out.println("-------- do delete called ------");
+
+
+        try {
+            String slotIdParam = request.getParameter("slotId");
+
+            if (slotIdParam != null) {
+                int slotId = Integer.parseInt(slotIdParam);
+
+                slotDAO.deleteSlot(slotId);
+
+
+                response.setStatus(HttpServletResponse.SC_OK);
+                response.getWriter().println("Slot deleted successfully");
+            } else {
+                response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Missing slotId parameter");
+            }
+
+        } catch (NumberFormatException e) {
+            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Invalid slotId parameter");
+        } catch (Exception e) {
+            e.printStackTrace();
+            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Error deleting slot");
+        }
+
+        }
+
+
 
     private void sendAsJson(
             HttpServletResponse response,

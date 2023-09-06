@@ -1,108 +1,156 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Bootstrap 4, from LayoutIt!</title>
+  <title>The Jobs Consultation Service</title>
 
-    <meta
-      name="description"
-      content="Source code generated using layoutit.com"
-    />
-    <meta name="author" content="LayoutIt!" />
+  <meta
 
-    <link href="css/bootstrap.min.css" rel="stylesheet" />
-    <link href="css/style.css" rel="stylesheet" />
-    <script src="js/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/scripts.js"></script>
-    <script>
-      $(document).ready(function () {
-        $("#login_btn").on("click", function () {
-          // alert("Handler for `click` called.");
-          console.log($("#password").val());
-          var myObject = new Object();
-          myObject.username = $("#username").val();
-          myObject.password = $("#password").val();
-          console.log(JSON.stringify(myObject));
-          $.ajax({
-            type: "POST",
-            url: "http://localhost:8080/ServletSample/loginServlet",
-            data: JSON.stringify(myObject),
-            success: function () {
-              //alert("Thanks!");
-              //window.location.href = 'http://localhost:8080/ServletSample/consultant.html';
-            },
-            dataType: "json",
-            error: function () {
-              alert("error!");
-            },
-          }).done(function (data) {
-            console.log(data);
-            if (data.userType == "admin") {
-              window.location.href =
-                "http://localhost:8080/ServletSample/admin.html";
-            } else if (data.userType == "consultant") {
-              window.location.href =
-                "http://localhost:8080/ServletSample/consultant.html";
-            } else {
-              window.location.href =
-                "http://localhost:8080/ServletSample/applicant.html";
-            }
-          });
+  />
+  <meta name="author" content="LayoutIt!" />
+
+  <link href="css/bootstrap.min.css" rel="stylesheet" />
+  <link href="css/style.css" rel="stylesheet" />
+  <script src="js/jquery.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/scripts.js"></script>
+  <script>
+    $(document).ready(function () {
+      $("#login_btn").on("click", function () {
+        // alert("Handler for `click` called.");
+        console.log($("#password").val());
+        var myObject = new Object();
+        myObject.username = $("#username").val();
+        myObject.password = $("#password").val();
+        console.log(JSON.stringify(myObject));
+        $.ajax({
+          type: "POST",
+          url: "http://localhost:8080/ServletSample/loginServlet",
+          data: JSON.stringify(myObject),
+          success: function () {
+            //alert("Thanks!");
+            //window.location.href = 'http://localhost:8080/ServletSample/consultant.html';
+          },
+          dataType: "json",
+          error: function () {
+            alert("error!");
+          },
+        }).done(function (data) {
+          console.log(data);
+          if (data.userType == "admin") {
+            window.location.href =
+                    "http://localhost:8080/ServletSample/admin.html";
+          } else if (data.userType == "consultant") {
+            window.location.href =
+                    "http://localhost:8080/ServletSample/consultant.html";
+          } else {
+            window.location.href =
+                    "http://localhost:8080/ServletSample/applicant.html";
+          }
         });
       });
-    </script>
-  </head>
+    });
+  </script>
+  <style>
 
-  <body>
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-md-12">
-          <p>Welcome to The Jobs consultation Service.</p>
-          <blockquote class="blockquote">
-            <p class="mb-0">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
-              posuere erat a ante.
-            </p>
-            <footer class="blockquote-footer">
-              Someone famous in <cite>Source Title</cite>
-            </footer>
-          </blockquote>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-4"></div>
-        <div class="col-md-4">
-          <form role="form">
-            <div class="form-group">
-              <label for="exampleInputEmail1"> Email address </label>
-              <input type="text" class="form-control" id="username" />
-            </div>
-            <div class="form-group">
-              <label for="exampleInputPassword1"> Password </label>
-              <input type="password" class="form-control" id="password" />
-            </div>
+    body {
+      background-color: #f5f5f5;
+      font-family: Arial, sans-serif;
+    }
 
-            <button type="button" id="login_btn" class="btn btn-primary">
-              Submit
-            </button>
-          </form>
-        </div>
-        <div class="col-md-4"></div>
-      </div>
-      <div class="row">
-        <div class="col-md-12">
-          <address>
-            <strong>Twitter, Inc.</strong><br />
-            795 Folsom Ave, Suite 600<br />
-            San Francisco, CA 94107<br />
-            <abbr title="Phone">P:</abbr> (123) 456-7890
-          </address>
-        </div>
-      </div>
+    .container-fluid {
+      max-width: 600px;
+      margin: 50px auto;
+      background-color: #fff;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    blockquote {
+      background-color: #f9f9f9;
+      padding: 10px;
+      border-left: 5px solid #007BFF;
+      margin: 20px 0;
+    }
+
+    blockquote .blockquote-footer {
+      font-size: 12px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      text-align: center;
+      display: block;
+    }
+
+    .form-group .form-control {
+      display: block;
+      margin: 0 auto;
+      max-width: 250px;  /* Adjust width as needed */
+    }
+
+
+    #login_btn {
+      width: 100%;
+    }
+
+    address {
+      font-style: normal;
+      background-color: #f9f9f9;
+      padding: 10px;
+      border-radius: 5px;
+    }
+
+
+  </style>
+</head>
+
+<body>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <p style="font-size:30px; color: black;"><em>The Jobs</em></p>
+
     </div>
-  </body>
+  </div>
+  <div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+      <form role="form">
+        <div class="form-group text-center">
+          <label for="username"> Username </label>
+          <input type="text" class="form-control" id="username" />
+        </div>
+        <div class="form-group text-center">
+          <label for="password"> Password </label>
+          <input type="password" class="form-control" id="password" />
+        </div>
+
+        <button type="button" id="login_btn" class="btn btn-primary">
+          Login
+        </button>
+      </form>
+    </div>
+    <div class="col-md-4"></div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-md-12">
+      <address>
+        <strong>The Jobs Consultations</strong><br />
+        No.07, Galle Road<br />
+        Colombo<br />
+        <abbr title="Phone">P:</abbr> (011) 456-7890
+      </address>
+    </div>
+  </div>
+</div>
+</body>
 </html>

@@ -73,23 +73,27 @@ public class ApplicantServlet extends HttpServlet {
 
         System.out.println("------------------");
 
-        StringBuilder buffer = new StringBuilder();
-        BufferedReader reader = request.getReader();
-        String line;
-        while ((line = reader.readLine()) != null) {
-            buffer.append(line);
+        try {
+            String applicantIdParam = request.getParameter("applicantId");
+
+            if (applicantIdParam != null) {
+                int applicantId = Integer.parseInt(applicantIdParam);
+
+                applicantDAO.deleteApplicant(applicantId);
+
+
+                response.setStatus(HttpServletResponse.SC_OK);
+                response.getWriter().println("Applicant deleted successfully");
+            } else {
+                response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Missing applicantId parameter");
+            }
+
+        } catch (NumberFormatException e) {
+            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Invalid applicantId parameter");
+        } catch (Exception e) {
+            e.printStackTrace();
+            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Error deleting applicant");
         }
-
-        String payload = buffer.toString();
-        Gson _gson = new Gson();
-
-        Applicant model = _gson.fromJson(payload, Applicant.class);
-
-        System.out.println("id : " + model.getId());
-
-        applicantDAO.deleteApplicant(model.getId());
-
-        sendAsJson(response, model);
 
     }
 
