@@ -9,6 +9,7 @@ import com.test.servlet.persistance.dao.ApplicantDAO;
 import com.test.servlet.persistance.dao.ConsultantDAO;
 import com.test.servlet.persistance.dao.SlotDAO;
 import com.test.servlet.utility.HibernateProxyTypeAdapter;
+import com.test.servlet.utility.LocalDateTimeDeserializer;
 import com.test.servlet.utility.LocalDateTimeSerializer;
 import org.hibernate.Session;
 
@@ -68,27 +69,37 @@ public class UniSlotServlet extends HttpServlet {
     protected void doPut(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException{
 
+        try {
 
-        int id = Integer.parseInt(request.getParameter("slotId"));
+            int id = Integer.parseInt(request.getParameter("slotId"));
 
-        System.out.println(id);
+            System.out.println(id);
 
-        StringBuilder buffer = new StringBuilder();
-        BufferedReader reader = request.getReader();
-        String line;
-        while ((line = reader.readLine()) != null) {
-            buffer.append(line);
+            StringBuilder buffer = new StringBuilder();
+            BufferedReader reader = request.getReader();
+            String line;
+            while ((line = reader.readLine()) != null) {
+                buffer.append(line);
+            }
+
+            String payload = buffer.toString();
+
+            Gson gson = new GsonBuilder()
+                    .registerTypeAdapter(Date.class, new LocalDateTimeDeserializer())
+                    .setPrettyPrinting().create();
+
+
+            Slot model = gson.fromJson(payload, Slot.class);
+
+            System.out.println("id : " + model.getSlotId());
+
+            Slot updatedSlot = slotDAO.updateSlotReturn(id,model);
+            sendAsJson(response, updatedSlot);
+
+
+        }catch (Exception e){
+            e.printStackTrace();
         }
-
-        String payload = buffer.toString();
-        Gson _gson = new Gson();
-
-        Slot model = _gson.fromJson(payload, Slot.class);
-
-        System.out.println("id : " + model.getSlotId());
-
-        Slot updatedSlot = slotDAO.updateSlotReturn(id,model);
-        sendAsJson(response, updatedSlot);
 
 
     }

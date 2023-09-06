@@ -32,4 +32,5 @@ com\test\servlet\servlets\ConsultantServlet.class
 com\test\servlet\persistance\HibernateUtil.class
 com\test\servlet\servlets\AllConsultantServlet.class
 com\test\servlet\servlets\AllApplicantServlet.class
+com\test\servlet\servlets\DownloadFileServlet.class
 com\test\servlet\servlets\LoginServlet.class

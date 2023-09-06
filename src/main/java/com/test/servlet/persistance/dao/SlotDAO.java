@@ -233,7 +233,7 @@ public class SlotDAO {
             if (existingSlot != null){
 
                 existingSlot.setStartTime(slot.getStartTime());
-                existingSlot.setStartTime(slot.getEndTime());
+                existingSlot.setEndTime(slot.getEndTime());
 
             }
             else {
